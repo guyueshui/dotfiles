@@ -1,0 +1,29 @@
+{
+ "baidu_active_uid": 1090315920,
+ "baidu_user_list": [
+  {
+   "uid": 1090315920,
+   "name": "只能样了",
+   "sex": "♂",
+   "age": 6,
+   "bduss": "UQwTUxvcXkxOUExSUlNWE1rTmRNZ3ZaNmdISEY4QnJ5NTR3MExIbllCclVrVjVkSVFBQUFBJCQAAAAAAAAAAAEAAACQ5vxA1rvE3NH5wcsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANQEN13UBDddY",
+   "ptoken": "",
+   "stoken": "",
+   "workdir": "/"
+  }
+ ],
+ "appid": 266719,
+ "cache_size": 30000,
+ "max_parallel": 100,
+ "max_upload_parallel": 10,
+ "max_download_load": 3,
+ "max_download_rate": 0,
+ "max_upload_rate": 0,
+ "user_agent": "netdisk;8.3.1;android-android",
+ "pcs_ua": "",
+ "pan_ua": "netdisk;2.2.51.6;netdisk;10.0.63;PC;android-android",
+ "savedir": "/home/yychi/EXTRA/Downloads/Baidu-PC-go",
+ "enable_https": false,
+ "proxy": "",
+ "local_addrs": ""
+}

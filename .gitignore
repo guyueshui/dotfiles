@@ -1,0 +1,19 @@
+#----[ ignore all ] -----
+*
+#---[ consider list ]---
+!*.[Xx]resources
+!*.conf
+!.aria2/
+!*config*
+!*[a-zA-Z]*rc
+!.config/*
+!.config/**/*rc
+!.config/**/*conf*
+!.config/**/*.json
+#---[ ignore list ]---
+.config/shadowsocks
+.config/v2ray
+.config/qv2ray
+stoc.conf
+.muttrc
+.msmtprc

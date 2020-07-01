@@ -1,0 +1,107 @@
+!!$HOME/.Xresources
+
+/**********************************************************************
+*                              General                               *
+**********************************************************************/
+
+xft.dpi: 96
+!xft.antialias: true
+xft.hinting: true
+xft.rgba: rgb
+xft.autohint: false
+xft.hintstyle: hintfull
+xft.lcdfilter: lcddefault
+xft:WenQuanYi Micro Hei:style=Regular:size=12, \
+xft:Font Awesome 5 Free:style=Regular:antialias=false:size=12, \
+
+!! Load pre-defined colors
+##include "/home/yychi/space-vim-dark.xresources"
+
+/**********************************************************************
+*                              xterm                                 *
+**********************************************************************/
+
+xterm*ScrollBar: false
+xterm*faceName: Consolas
+xterm*faceNameDoublesize: WenQuanYi Micro Hei
+xterm*faceSize: 13
+xterm*allowBoldFonts: true
+xterm*foreground: grey100 
+xterm*background: rgb:30/10/10
+!xterm*background: black
+
+/**********************************************************************
+*                               urxvt                                *
+**********************************************************************/
+
+URxvt.preeditType:Root
+!!调整此处设置输入法
+URxvt.inputMethod:fcitx
+! for 'fake' transparency (without Compton) uncomment the following three lines
+!URxvt.inheritPixmap:            true
+!URxvt.transparent:              true
+!URxvt.shading:                  138
+! Normal copy-paste keybindings without perls
+URxvt.iso14755:                   false
+URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
+!!颜色设置
+URxvt.depth:32
+!!中括号内数表示透明度
+URxvt.background:[70]black
+URxvt.foreground:#ffffff
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+!!URL操作
+URxvt.urlLauncher:chromium
+URxvt.matcher.button:1
+Urxvt.perl-ext-common:matcher
+!!滚动条设置
+URxvt.scrollBar:False
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!!滚屏设置
+URxvt.mouseWheelScrollPage:False
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+! screen scroll
+URxvt.secondaryScroll:True
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.saveLines:3000
+!!边框
+URxvt.borderLess:False
+!!字体设置
+URxvt.font:xft:DejaVu Sans Mono for Powerline:antialias=True:pixelsize=18,xft:WenQuanYi Micro Hei:pixelsize=18
+URxvt.boldfont:xft:DejaVu Sans Mono for Powerline:antialias=True:pixelsize=18,xft:WenQuanYi Micro Hei:pixelsize=18
+URxvt.italicFont:xft:Source Code Pro for Powerline:style=Italic:antialias=True:pixelsize=18,xft:WenQuanYi Micro Hei:style=Italic:pixelsize=18
+
+/**********************************************************************
+*                                rofi                                *
+**********************************************************************/
+
+!rofi.modi: run
+rofi.font: Monaco 15
+! rofi.width: 100
+! rofi.lines: 7
+! rofi.columns: 1
+! rofi.opacity: 80
+! !                    bg       fg      altbg    hlbg     hlfg
+! rofi.color-normal: #282828, #ebdbb2, #282828, #ebdbb2, #282828
+! rofi.color-urgent: #282828, #ebdbb2, #282828, #ebdbb2, #282828
+! rofi.color-active: #282828, #ebdbb2, #282828, #ebdbb2, #282828
+! rofi.color-window: #282828, #282828
+! rofi.bw: 0
+! rofi.location: 2
+! rofi.padding: 100
+rofi.fuzzy: true
+!rofi.theme: paper-float

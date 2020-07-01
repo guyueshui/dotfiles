@@ -1,0 +1,7 @@
+[user]
+	email = guyueshui002@gmail.com
+	name = guyueshui
+[color]
+	ui = auto
+[alias]
+	graph = log --graph --oneline --decorate=short
