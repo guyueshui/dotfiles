@@ -141,6 +141,8 @@ filetype indent on
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
+" for more settings, pls go to:
+" ~/.vim/bundle/vim-latex/ftplugin/tex.vim
 
 """ markdown 支持 ----------------------------------------
 Plugin 'godlygeek/tabular'
@@ -165,7 +167,7 @@ let g:UltiSnipsJumpBackwardTrigger="<leader>p"
 let g:UltiSnipsEditSplit="vertical"
 
 """ takswarrior ------------------------------------------
-Plugin 'blindFS/vim-taskwarrior'
+" Plugin 'blindFS/vim-taskwarrior'
 
 
 " 你的所有插件需要在下面这行之前
@@ -204,7 +206,7 @@ set scrolloff=3	    " 3 lines to top/bottom
 "set smartindent	" 自动缩进
 set showcmd         " show commands
 " file encoding families, see: https://www.zhihu.com/question/22363620
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1 
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set colorcolumn=80  " draw a vertical line at column 80
 """ filetype specification, see: https://segmentfault.com/q/1010000000453410/
 autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set ai

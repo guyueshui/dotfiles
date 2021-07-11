@@ -24,6 +24,7 @@
             "file:///home/yychi/Documents/workspace/console/c%2B%2B"
         ],
         "files2": [
+            "file:///home/yychi/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc",
             "file:///home/yychi/README.md",
             "file:///home/yychi/Downloads/chromeDownloads/CATGAN.ipynb",
             "file:///home/yychi/Documents/BlogHugo/content/post/server-develop-preliminaries.md",
@@ -212,7 +213,17 @@
                                     "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "external": "file:///home/yychi/README.md",
+                                        "external": "file:///home/yychi/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc",
+                                        "path": "/home/yychi/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
                                         "path": "/home/yychi/README.md",
                                         "scheme": "file"
                                     },
@@ -298,16 +309,6 @@
                                     },
                                     "enabled": true,
                                     "label": "~/Documents/HexoPages/source/_posts/Vim命令速查.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/workspace/console/c++/tencent2.cpp",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/workspace/console/c++/tencent2.cpp"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -817,8 +818,7 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "&&Back",
-                        "enabled": false
+                        "label": "&&Back"
                     },
                     {
                         "id": "workbench.action.navigateForward",
@@ -1712,13 +1712,13 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "backupPath": "/home/yychi/.config/Code/Backups/1593614837553",
+            "backupPath": "/home/yychi/.config/Code/Backups/1595171637554",
             "uiState": {
                 "mode": 1,
-                "x": 966,
-                "y": 53,
-                "width": 933,
-                "height": 1006
+                "x": 20,
+                "y": 78,
+                "width": 1880,
+                "height": 982
             }
         },
         "openedWindows": []

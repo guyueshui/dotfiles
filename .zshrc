@@ -71,9 +71,9 @@ function collapse_pwd {
 RPROMPT="%F$_YELLOW%(?..%?)%f $RESET$RED%T$FINISH"
 # prompt at lhs
 if [ $UID -eq 0 ]; then
-    PROMPT="$RED%n@%m $GREEN%~$RESET#$FINISH "
+    PROMPT="$RED%n@%m $GREEN%~$_YELLOW#$FINISH "
 else
-    PROMPT="$CYAN%n@$GREEN%~$RESET>$FINISH "
+    PROMPT="$CYAN%n@$GREEN%~$_YELLOW>$FINISH "
 fi
 ### }}}
 
