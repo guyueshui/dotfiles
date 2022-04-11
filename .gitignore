@@ -3,6 +3,7 @@
 #---[ consider list ]---
 !*.[Xx]resources
 !*.conf
+!*.sh
 !.aria2/
 !*config*
 !*[a-zA-Z]*rc

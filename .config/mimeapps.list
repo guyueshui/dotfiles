@@ -31,3 +31,4 @@ text/x-c++src=gvim.desktop;visual-studio-code.desktop;
 text/markdown=typora.desktop;visual-studio-code.desktop;
 text/html=chromium.desktop;
 application/pdf=org.gnome.Evince.desktop;foxitreader.desktop;org.pwmt.zathura-pdf-mupdf.desktop;evince-usercreated-1.desktop;
+audio/mpeg=mpv.desktop;

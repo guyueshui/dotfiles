@@ -305,7 +305,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 #alias h='htop'
 #alias vim='sudo vim'
 alias def='sdcv -c'
-alias nutstore='python2 /opt/nutstore/dist/bin/nutstore-pydaemon.py'
+# alias nutstore='python2 /opt/nutstore/dist/bin/nutstore-pydaemon.py'
 alias py38='source /opt/pycharm/py38/bin/activate'
 # disable compiler extention & maximize warning level & froce treat warning as errors
 # see: https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/

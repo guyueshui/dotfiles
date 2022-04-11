@@ -1,66 +1,5 @@
 {
     "telemetry.machineId": "41a4f7cc8d2bb2dd076412a4f87865060ef8f5671f95e622219455a1707e606f",
-    "openedPathsList": {
-        "workspaces3": [
-            "file:///home/yychi/Documents/workspace/latex/paper",
-            "vscode-remote://ssh-remote%2B7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d/home/yychi/Documents/workspace/now_work/Torch-InfoGAN",
-            "file:///home/yychi/Documents/workspace/now_work/Torch-InfoGAN",
-            "file:///home/yychi/Documents/workspace/now_work/BEGAN-pytorch-master",
-            "file:///home/yychi/Documents/workspace/console/python/netease-hw",
-            "file:///home/yychi/Documents",
-            "vscode-remote://ssh-remote%2B7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d/home/yychi/Documents/workspace/console/python",
-            "vscode-remote://ssh-remote%2B7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d/home/yychi/Documents/workspace/now_work/ss-infogan",
-            "vscode-remote://ssh-remote%2B7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d/home/yychi/Documents/workspace/now_work/infoGAN-pytorch",
-            "vscode-remote://ssh-remote%2B7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d/home/yychi",
-            "file:///home/yychi/Documents/workspace/now_work/InfoGAN",
-            "file:///home/yychi/Documents/BlogHugo",
-            "file:///home/yychi/Documents/HugoPages",
-            "vscode-remote://ssh-remote%2B10.19.125.173/home/yychi/Documents/workspace/now_work/InfoGAN",
-            "file:///home/yychi/Documents/HexoPages/themes",
-            "vscode-remote://ssh-remote%2B10.19.125.173/home/wyl/yy/cs231",
-            "vscode-remote://ssh-remote%2B10.19.125.173/home/wyl/yy/InfoGAN",
-            "vscode-remote://ssh-remote%2B10.19.125.173/home/wyl/yy/InfoGAN/InfoGAN",
-            "vscode-remote://ssh-remote%2B10.19.125.173/home/wyl/yy/DeepChrome/code",
-            "file:///home/yychi/Documents/workspace/console/c%2B%2B"
-        ],
-        "files2": [
-            "file:///home/yychi/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc",
-            "file:///home/yychi/README.md",
-            "file:///home/yychi/Downloads/chromeDownloads/CATGAN.ipynb",
-            "file:///home/yychi/Documents/BlogHugo/content/post/server-develop-preliminaries.md",
-            "file:///home/yychi/Documents/campushr.md",
-            "file:///home/yychi/Documents/workspace/latex/report_cn/README.md",
-            "file:///home/yychi/Documents/BlogHugo/content/post/cpp-learn.md",
-            "file:///home/yychi/Documents/learn2live/LearningNotes/CVX%20notes.md",
-            "file:///home/yychi/Documents/HexoPages/source/_posts/Exponetial-Distribution.md",
-            "file:///home/yychi/Documents/HexoPages/source/_posts/Vim%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5.md",
-            "file:///home/yychi/Documents/workspace/console/c%2B%2B/tencent2.cpp",
-            "file:///home/yychi/Documents/workspace/console/c%2B%2B/Gp1_1.cpp",
-            "file:///home/yychi/Documents/workspace/console/c%2B%2B/chuan.cpp"
-        ],
-        "workspaceLabels": [
-            null,
-            "~/Documents/workspace/now_work/Torch-InfoGAN [SSH: HP-WorkStation]",
-            null,
-            null,
-            null,
-            "~/Documents",
-            "~/Documents/workspace/console/python [SSH: HP-WorkStation]",
-            "~/Documents/workspace/now_work/ss-infogan [SSH: HP-WorkStation]",
-            "~/Documents/workspace/now_work/infoGAN-pytorch [SSH: HP-WorkStation]",
-            "/home/yychi [SSH: HP-WorkStation]",
-            null,
-            null,
-            null,
-            "~/Documents/workspace/now_work/InfoGAN [SSH: 10.19.125.173]",
-            null,
-            "/home/wyl/yy/cs231 [SSH: 10.19.125.173]",
-            "/home/wyl/yy/InfoGAN [SSH: 10.19.125.173]",
-            "/home/wyl/yy/InfoGAN/InfoGAN [SSH: 10.19.125.173]",
-            "/home/wyl/yy/DeepChrome/code [SSH: 10.19.125.173]",
-            null
-        ]
-    },
     "lastKnownMenubarData": {
         "menus": {
             "File": {
@@ -68,6 +7,10 @@
                     {
                         "id": "workbench.action.files.newUntitledFile",
                         "label": "&&New File"
+                    },
+                    {
+                        "id": "welcome.showNewFileEntries",
+                        "label": "New File..."
                     },
                     {
                         "id": "workbench.action.newWindow",
@@ -86,10 +29,10 @@
                     },
                     {
                         "id": "workbench.action.openWorkspace",
-                        "label": "Open Wor&&kspace..."
+                        "label": "Open Wor&&kspace from File..."
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.34",
                         "label": "Open &&Recent",
                         "submenu": {
                             "items": [
@@ -105,6 +48,63 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "fsPath": "/home/yychi/Documents/workspace/latex",
+                                        "external": "file:///home/yychi/Documents/workspace/latex",
+                                        "path": "/home/yychi/Documents/workspace/latex",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/workspace/latex"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/BlogHugo",
+                                        "path": "/home/yychi/Documents/BlogHugo",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/BlogHugo"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/console/c%2B%2B/new_start",
+                                        "path": "/home/yychi/Documents/workspace/console/c++/new_start",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/workspace/console/c++/new_start"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/asiocore_73",
+                                        "path": "/home/yychi/Documents/workspace/asiocore_73",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/workspace/asiocore_73"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/console",
+                                        "path": "/home/yychi/Documents/workspace/console",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/workspace/console"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/latex/paper",
                                         "path": "/home/yychi/Documents/workspace/latex/paper",
                                         "scheme": "file"
                                     },
@@ -126,6 +126,7 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/now_work/Torch-InfoGAN",
                                         "path": "/home/yychi/Documents/workspace/now_work/Torch-InfoGAN",
                                         "scheme": "file"
                                     },
@@ -136,6 +137,7 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/now_work/BEGAN-pytorch-master",
                                         "path": "/home/yychi/Documents/workspace/now_work/BEGAN-pytorch-master",
                                         "scheme": "file"
                                     },
@@ -146,6 +148,7 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/console/python/netease-hw",
                                         "path": "/home/yychi/Documents/workspace/console/python/netease-hw",
                                         "scheme": "file"
                                     },
@@ -153,61 +156,73 @@
                                     "label": "~/Documents/workspace/console/python/netease-hw"
                                 },
                                 {
-                                    "id": "openRecentFolder",
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "path": "/home/yychi/Documents",
+                                        "external": "file:///home/yychi/.aria2/aria2.conf",
+                                        "path": "/home/yychi/.aria2/aria2.conf",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/Documents"
+                                    "label": "~/.aria2/aria2.conf"
                                 },
                                 {
-                                    "id": "openRecentFolder",
+                                    "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "path": "/home/yychi/Documents/workspace/console/python",
-                                        "scheme": "vscode-remote",
-                                        "authority": "ssh-remote+7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d"
+                                        "external": "file:///home/yychi/bin/cht.sh",
+                                        "path": "/home/yychi/bin/cht.sh",
+                                        "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/Documents/workspace/console/python [SSH: HP-WorkStation]"
+                                    "label": "~/bin/cht.sh"
                                 },
                                 {
-                                    "id": "openRecentFolder",
+                                    "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "path": "/home/yychi/Documents/workspace/now_work/ss-infogan",
-                                        "scheme": "vscode-remote",
-                                        "authority": "ssh-remote+7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d"
+                                        "external": "file:///home/yychi/bin/rand_wallpaper.sh",
+                                        "path": "/home/yychi/bin/rand_wallpaper.sh",
+                                        "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/Documents/workspace/now_work/ss-infogan [SSH: HP-WorkStation]"
+                                    "label": "~/bin/rand_wallpaper.sh"
                                 },
                                 {
-                                    "id": "openRecentFolder",
+                                    "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "path": "/home/yychi/Documents/workspace/now_work/infoGAN-pytorch",
-                                        "scheme": "vscode-remote",
-                                        "authority": "ssh-remote+7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d"
+                                        "external": "file:///home/yychi/bin/aria2c_add_trackers.sh",
+                                        "path": "/home/yychi/bin/aria2c_add_trackers.sh",
+                                        "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/Documents/workspace/now_work/infoGAN-pytorch [SSH: HP-WorkStation]"
+                                    "label": "~/bin/aria2c_add_trackers.sh"
                                 },
                                 {
-                                    "id": "openRecentFolder",
+                                    "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "path": "/home/yychi",
-                                        "scheme": "vscode-remote",
-                                        "authority": "ssh-remote+7b22686f73744e616d65223a2248502d576f726b53746174696f6e227d"
+                                        "external": "file:///home/yychi/Documents/workspace/console/python/yield_coroutine/yield_chain.py",
+                                        "path": "/home/yychi/Documents/workspace/console/python/yield_coroutine/yield_chain.py",
+                                        "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "/home/yychi [SSH: HP-WorkStation]"
+                                    "label": "~/Documents/workspace/console/python/yield_coroutine/yield_chain.py"
                                 },
                                 {
-                                    "id": "vscode.menubar.separator"
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/BlogHugo/content/post/python-metaclass.md",
+                                        "path": "/home/yychi/Documents/BlogHugo/content/post/python-metaclass.md",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/BlogHugo/content/post/python-metaclass.md"
                                 },
                                 {
                                     "id": "openRecentFile",
@@ -224,6 +239,7 @@
                                     "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/yychi/README.md",
                                         "path": "/home/yychi/README.md",
                                         "scheme": "file"
                                     },
@@ -234,6 +250,7 @@
                                     "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/yychi/Downloads/chromeDownloads/CATGAN.ipynb",
                                         "path": "/home/yychi/Downloads/chromeDownloads/CATGAN.ipynb",
                                         "scheme": "file"
                                     },
@@ -244,71 +261,12 @@
                                     "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/BlogHugo/content/post/server-develop-preliminaries.md",
                                         "path": "/home/yychi/Documents/BlogHugo/content/post/server-develop-preliminaries.md",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
                                     "label": "~/Documents/BlogHugo/content/post/server-develop-preliminaries.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/campushr.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/campushr.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/workspace/latex/report_cn/README.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/workspace/latex/report_cn/README.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/BlogHugo/content/post/cpp-learn.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/BlogHugo/content/post/cpp-learn.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/learn2live/LearningNotes/CVX notes.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/learn2live/LearningNotes/CVX notes.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/HexoPages/source/_posts/Exponetial-Distribution.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/HexoPages/source/_posts/Exponetial-Distribution.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "path": "/home/yychi/Documents/HexoPages/source/_posts/Vim命令速查.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/HexoPages/source/_posts/Vim命令速查.md"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -339,6 +297,10 @@
                         "label": "Save Workspace As..."
                     },
                     {
+                        "id": "workbench.action.duplicateWorkspaceInNewWindow",
+                        "label": "Duplicate Workspace"
+                    },
+                    {
                         "id": "vscode.menubar.separator"
                     },
                     {
@@ -350,7 +312,7 @@
                         "label": "Save &&As..."
                     },
                     {
-                        "id": "workbench.action.files.saveAll",
+                        "id": "saveAll",
                         "label": "Save A&&ll",
                         "enabled": false
                     },
@@ -359,10 +321,11 @@
                     },
                     {
                         "id": "workbench.action.toggleAutoSave",
-                        "label": "A&&uto Save"
+                        "label": "A&&uto Save",
+                        "checked": true
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.33",
                         "label": "&&Preferences",
                         "submenu": {
                             "items": [
@@ -373,6 +336,10 @@
                                 {
                                     "id": "settings.filterByOnline",
                                     "label": "&&Online Services Settings"
+                                },
+                                {
+                                    "id": "settings.filterByTelemetry",
+                                    "label": "Telemetry Settings"
                                 },
                                 {
                                     "id": "workbench.view.extensions",
@@ -387,7 +354,7 @@
                                 },
                                 {
                                     "id": "workbench.extensions.action.showRecommendedKeymapExtensions",
-                                    "label": "&&Keymaps"
+                                    "label": "&&Migrate Keyboard Shortcuts from..."
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -406,6 +373,17 @@
                                 {
                                     "id": "workbench.action.selectIconTheme",
                                     "label": "File &&Icon Theme"
+                                },
+                                {
+                                    "id": "workbench.action.selectProductIconTheme",
+                                    "label": "&&Product Icon Theme"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "workbench.userDataSync.actions.turnOn",
+                                    "label": "Turn on Settings Sync..."
                                 }
                             ]
                         }
@@ -423,8 +401,7 @@
                     },
                     {
                         "id": "workbench.action.closeFolder",
-                        "label": "Close &&Folder",
-                        "enabled": false
+                        "label": "Close &&Folder"
                     },
                     {
                         "id": "workbench.action.closeWindow",
@@ -500,10 +477,6 @@
                     {
                         "id": "editor.emmet.action.expandAbbreviation",
                         "label": "Emmet: E&&xpand Abbreviation"
-                    },
-                    {
-                        "id": "workbench.action.showEmmetCommands",
-                        "label": "E&&mmet..."
                     }
                 ]
             },
@@ -598,7 +571,7 @@
                         "id": "vscode.menubar.separator"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.22",
                         "label": "&&Appearance",
                         "submenu": {
                             "items": [
@@ -612,7 +585,7 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleCenteredLayout",
-                                    "label": "Centered Layout"
+                                    "label": "&&Centered Layout"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -637,13 +610,12 @@
                                     "checked": true
                                 },
                                 {
-                                    "id": "workbench.action.toggleEditorVisibility",
-                                    "label": "Show &&Editor Area",
-                                    "checked": true
-                                },
-                                {
                                     "id": "workbench.action.togglePanel",
                                     "label": "Show &&Panel"
+                                },
+                                {
+                                    "id": "workbench.action.toggleAuxiliaryBar",
+                                    "label": "Show Si&&de Panel"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -653,12 +625,50 @@
                                     "label": "&&Move Side Bar Right"
                                 },
                                 {
-                                    "id": "workbench.action.positionPanelLeft",
-                                    "label": "Move Panel Left"
+                                    "id": "submenuitem.32",
+                                    "label": "Panel Position",
+                                    "submenu": {
+                                        "items": [
+                                            {
+                                                "id": "workbench.action.positionPanelBottom",
+                                                "label": "Bottom",
+                                                "checked": true
+                                            },
+                                            {
+                                                "id": "workbench.action.positionPanelLeft",
+                                                "label": "Left"
+                                            },
+                                            {
+                                                "id": "workbench.action.positionPanelRight",
+                                                "label": "Right"
+                                            }
+                                        ]
+                                    }
                                 },
                                 {
-                                    "id": "workbench.action.positionPanelRight",
-                                    "label": "Move Panel Right"
+                                    "id": "submenuitem.31",
+                                    "label": "Align Panel",
+                                    "submenu": {
+                                        "items": [
+                                            {
+                                                "id": "workbench.action.alignPanelCenter",
+                                                "label": "Center",
+                                                "checked": true
+                                            },
+                                            {
+                                                "id": "workbench.action.alignPanelJustify",
+                                                "label": "Justify"
+                                            },
+                                            {
+                                                "id": "workbench.action.alignPanelLeft",
+                                                "label": "Left"
+                                            },
+                                            {
+                                                "id": "workbench.action.alignPanelRight",
+                                                "label": "Right"
+                                            }
+                                        ]
+                                    }
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -679,7 +689,7 @@
                         }
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.29",
                         "label": "Editor &&Layout",
                         "submenu": {
                             "items": [
@@ -698,6 +708,13 @@
                                 {
                                     "id": "workbench.action.splitEditorRight",
                                     "label": "Split &&Right"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "workbench.action.splitEditorInGroup",
+                                    "label": "Split in &&Group"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -771,6 +788,10 @@
                         "id": "vscode.menubar.separator"
                     },
                     {
+                        "id": "workbench.actions.view.problems",
+                        "label": "&&Problems"
+                    },
+                    {
                         "id": "workbench.action.output.toggleOutput",
                         "label": "&&Output"
                     },
@@ -783,15 +804,11 @@
                         "label": "&&Terminal"
                     },
                     {
-                        "id": "workbench.actions.view.problems",
-                        "label": "&&Problems"
-                    },
-                    {
                         "id": "vscode.menubar.separator"
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "Toggle &&Word Wrap"
+                        "label": "&&Word Wrap"
                     },
                     {
                         "id": "editor.action.toggleMinimap",
@@ -810,7 +827,8 @@
                     },
                     {
                         "id": "editor.action.toggleRenderControlCharacter",
-                        "label": "Render &&Control Characters"
+                        "label": "Render &&Control Characters",
+                        "checked": true
                     }
                 ]
             },
@@ -827,14 +845,13 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.36",
                         "label": "Switch &&Editor",
                         "submenu": {
                             "items": [
@@ -883,7 +900,7 @@
                         }
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.37",
                         "label": "Switch &&Group",
                         "submenu": {
                             "items": [
@@ -897,54 +914,45 @@
                                 },
                                 {
                                     "id": "workbench.action.focusThirdEditorGroup",
-                                    "label": "Group &&3",
-                                    "enabled": false
+                                    "label": "Group &&3"
                                 },
                                 {
                                     "id": "workbench.action.focusFourthEditorGroup",
-                                    "label": "Group &&4",
-                                    "enabled": false
+                                    "label": "Group &&4"
                                 },
                                 {
                                     "id": "workbench.action.focusFifthEditorGroup",
-                                    "label": "Group &&5",
-                                    "enabled": false
+                                    "label": "Group &&5"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
                                     "id": "workbench.action.focusNextGroup",
-                                    "label": "&&Next Group",
-                                    "enabled": false
+                                    "label": "&&Next Group"
                                 },
                                 {
                                     "id": "workbench.action.focusPreviousGroup",
-                                    "label": "&&Previous Group",
-                                    "enabled": false
+                                    "label": "&&Previous Group"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
                                     "id": "workbench.action.focusLeftGroup",
-                                    "label": "Group &&Left",
-                                    "enabled": false
+                                    "label": "Group &&Left"
                                 },
                                 {
                                     "id": "workbench.action.focusRightGroup",
-                                    "label": "Group &&Right",
-                                    "enabled": false
+                                    "label": "Group &&Right"
                                 },
                                 {
                                     "id": "workbench.action.focusAboveGroup",
-                                    "label": "Group &&Above",
-                                    "enabled": false
+                                    "label": "Group &&Above"
                                 },
                                 {
                                     "id": "workbench.action.focusBelowGroup",
-                                    "label": "Group &&Below",
-                                    "enabled": false
+                                    "label": "Group &&Below"
                                 }
                             ]
                         }
@@ -1047,7 +1055,8 @@
                     },
                     {
                         "id": "workbench.action.debug.configure",
-                        "label": "Open &&Configurations"
+                        "label": "Open &&Configurations",
+                        "enabled": false
                     },
                     {
                         "id": "debug.addConfiguration",
@@ -1084,7 +1093,7 @@
                         "label": "Toggle &&Breakpoint"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.30",
                         "label": "&&New Breakpoint",
                         "submenu": {
                             "items": [
@@ -1101,7 +1110,7 @@
                                     "label": "&&Function Breakpoint..."
                                 },
                                 {
-                                    "id": "editor.debug.action.toggleLogPoint",
+                                    "id": "editor.debug.action.addLogPoint",
                                     "label": "&&Logpoint..."
                                 }
                             ]
@@ -1195,16 +1204,20 @@
             "Help": {
                 "items": [
                     {
-                        "id": "workbench.action.showWelcomePage",
-                        "label": "&&Welcome"
+                        "id": "workbench.action.openWalkthrough",
+                        "label": "Get Started"
                     },
                     {
-                        "id": "workbench.action.showInteractivePlayground",
-                        "label": "I&&nteractive Playground"
+                        "id": "workbench.action.showCommands",
+                        "label": "Show All Commands"
                     },
                     {
                         "id": "workbench.action.openDocumentationUrl",
                         "label": "&&Documentation"
+                    },
+                    {
+                        "id": "workbench.action.showInteractivePlayground",
+                        "label": "Editor Playgrou&&nd"
                     },
                     {
                         "id": "update.showCurrentReleaseNotes",
@@ -1218,8 +1231,8 @@
                         "label": "&&Keyboard Shortcuts Reference"
                     },
                     {
-                        "id": "workbench.action.openIntroductoryVideosUrl",
-                        "label": "Introductory &&Videos"
+                        "id": "workbench.action.openVideoTutorialsUrl",
+                        "label": "&&Video Tutorials"
                     },
                     {
                         "id": "workbench.action.openTipsAndTricksUrl",
@@ -1256,7 +1269,7 @@
                     },
                     {
                         "id": "workbench.action.toggleDevTools",
-                        "label": "&&Toggle Developer Tools"
+                        "label": "Toggle Developer Tools"
                     },
                     {
                         "id": "workbench.action.openProcessExplorer",
@@ -1276,6 +1289,10 @@
             "workbench.action.files.newUntitledFile": {
                 "label": "Ctrl+N",
                 "userSettingsLabel": "ctrl+n"
+            },
+            "welcome.showNewFileEntries": {
+                "label": "Ctrl+Alt+Super+N",
+                "userSettingsLabel": "ctrl+alt+meta+n"
             },
             "workbench.action.newWindow": {
                 "label": "Ctrl+Shift+N",
@@ -1320,11 +1337,6 @@
                 "isNative": false,
                 "userSettingsLabel": "ctrl+k ctrl+s"
             },
-            "workbench.extensions.action.showRecommendedKeymapExtensions": {
-                "label": "Ctrl+K Ctrl+M",
-                "isNative": false,
-                "userSettingsLabel": "ctrl+k ctrl+m"
-            },
             "workbench.action.selectTheme": {
                 "label": "Ctrl+K Ctrl+T",
                 "isNative": false,
@@ -1340,8 +1352,8 @@
                 "userSettingsLabel": "ctrl+k f"
             },
             "workbench.action.closeWindow": {
-                "label": "Ctrl+W",
-                "userSettingsLabel": "ctrl+w"
+                "label": "Alt+F4",
+                "userSettingsLabel": "alt+f4"
             },
             "workbench.action.quit": {
                 "label": "Ctrl+Q",
@@ -1425,12 +1437,12 @@
                 "userSettingsLabel": "alt+down"
             },
             "editor.action.insertCursorAbove": {
-                "label": "Shift+Alt+Up",
-                "userSettingsLabel": "shift+alt+up"
+                "label": "Ctrl+Shift+Up",
+                "userSettingsLabel": "ctrl+shift+up"
             },
             "editor.action.insertCursorBelow": {
-                "label": "Shift+Alt+Down",
-                "userSettingsLabel": "shift+alt+down"
+                "label": "Ctrl+Shift+Down",
+                "userSettingsLabel": "ctrl+shift+down"
             },
             "editor.action.insertCursorAtEndOfEachLineSelected": {
                 "label": "Shift+Alt+I",
@@ -1480,6 +1492,11 @@
                 "isNative": false,
                 "userSettingsLabel": "ctrl+numpad0"
             },
+            "workbench.action.splitEditorInGroup": {
+                "label": "Ctrl+K Ctrl+Shift+\\",
+                "isNative": false,
+                "userSettingsLabel": "ctrl+k ctrl+shift+\\"
+            },
             "workbench.action.toggleEditorGroupLayout": {
                 "label": "Shift+Alt+0",
                 "userSettingsLabel": "shift+alt+0"
@@ -1500,6 +1517,10 @@
                 "label": "Ctrl+Shift+D",
                 "userSettingsLabel": "ctrl+shift+d"
             },
+            "workbench.actions.view.problems": {
+                "label": "Ctrl+Shift+M",
+                "userSettingsLabel": "ctrl+shift+m"
+            },
             "workbench.action.output.toggleOutput": {
                 "label": "Ctrl+K Ctrl+H",
                 "isNative": false,
@@ -1513,10 +1534,6 @@
                 "label": "Ctrl+`",
                 "isNative": false,
                 "userSettingsLabel": "ctrl+`"
-            },
-            "workbench.actions.view.problems": {
-                "label": "Ctrl+Shift+M",
-                "userSettingsLabel": "ctrl+shift+m"
             },
             "editor.action.toggleWordWrap": {
                 "label": "Alt+Z",
@@ -1712,7 +1729,8 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "backupPath": "/home/yychi/.config/Code/Backups/1595171637554",
+            "folder": "file:///home/yychi/Documents/workspace/latex",
+            "backupPath": "/home/yychi/.config/Code/Backups/e8ea1820fa426aed112af901430cd587",
             "uiState": {
                 "mode": 1,
                 "x": 20,
@@ -1723,5 +1741,27 @@
         },
         "openedWindows": []
     },
-    "pickerWorkingDir": "/home/yychi/Documents/workspace/latex"
+    "pickerWorkingDir": "/home/yychi/.aria2",
+    "windowSplash": {
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#cccccc",
+            "background": "#1e1e1e",
+            "editorBackground": "#1e1e1e",
+            "titleBarBackground": "#3c3c3c",
+            "activityBarBackground": "#333333",
+            "sideBarBackground": "#252526",
+            "statusBarBackground": "#007acc",
+            "statusBarNoFolderBackground": "#68217a"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 0,
+            "activityBarWidth": 48,
+            "sideBarWidth": 0,
+            "statusBarHeight": 22,
+            "windowBorder": false
+        }
+    }
 }
