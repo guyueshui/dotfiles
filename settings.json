@@ -1,0 +1,80 @@
+{
+    //过滤不需要的文件
+    "files.exclude": {
+        "**/*.DS_Store": true,
+        "**/*.git": true,
+        "**/*.hg": true,
+        "**/*.svn": true,
+        "**/*.pyc": true,
+        "**/CVS": true,
+        "**/res": true,
+    },
+    "files.autoGuessEncoding": true,
+    "files.autoSave": "onFocusChange",
+    "editor.fontSize": 17,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.useCtrlKeys": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "after": [
+                ":"
+            ]
+        }
+    ],
+    "editor.cursorStyle": "block",
+    "editor.detectIndentation": true,
+    /// Python settings -------------------------------------------------------
+    //添加模块路径，不能用${workspaceFolder}, 直接填写绝对路径（以下根据自己项目路径做调整）
+    "python.autoComplete.extraPaths": [
+        "G:/codes/H73/simulator",
+    //     "/home/xxx/xxx/src/Server",
+    //     "/home/xxx/xxx/src/Server/Public",
+    //     "/home/xxx/xxx/src/Server/Lib"
+    ],
+    "python.languageServer": "Pylance",
+    // for flake8 config, see: https://km.netease.com/article/316990
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E,W,C, F401"
+    ],
+    "remote.SSH.remotePlatform": {
+        "开发服1": "linux"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "terminal.integrated.fontSize": 18,
+    "explorer.confirmDelete": false,
+    "editor.accessibilitySupport": "off",
+    "editor.wordWrap": "off",
+    "settingsSync.ignoredExtensions": [],
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "python.analysis.autoImportCompletions": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnusedImport": "error",
+        // "reportImportCycles": "error",
+        "reportIncompatibleMethodOverride": "warning",
+        "reportIncompatibleVariableOverride": "warning",
+    },
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+}
