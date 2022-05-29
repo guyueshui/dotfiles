@@ -75,6 +75,7 @@ bindsym ctrl+Mod1+comma exec mpc prev
 # screen shot
 # bindsym Print exec scrot -q 1 -e 'mv $f ~/Pictures'
 bindsym Print exec gnome-screenshot -i
+bindsym ctrl+Mod1+p exec flameshot gui
 # start Explorer
 bindsym $mod+e exec nautilus -w
 # start dmenu (a program launcher)
@@ -133,6 +134,8 @@ bindsym Mod1+space focus mode_toggle
 # scratchpad
 bindsym ctrl+Mod1+minus move scratchpad
 bindsym Mod1+minus scratchpad show
+# add extra handy pull-down terminal
+bindsym Mod1+p [class="URxvt"] scratchpad show
 
 
 # customize workspace name
