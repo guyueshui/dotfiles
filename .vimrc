@@ -79,7 +79,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 " see for reference:
 "   https://github.com/ycm-core/YouCompleteMe#options 
-let g:ycm_use_clangd = 0    " disable clangd
+let g:ycm_use_clangd = 1    " disable clangd
 let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf = '/home/yychi/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_error_symbol = 'E>'
@@ -244,10 +244,13 @@ map <leader>4 :diffget RE<CR> " get from remote
 "colorscheme  "solarized gruvbox, molokai, solarized, darkblue, colorsbox, desert, torte, neon
 
 colorscheme space-vim-dark
+"set termguicolors
 hi Comment cterm=italic
-"hi Normal     ctermbg=NONE guibg=NONE
-"hi LineNr     ctermbg=NONE guibg=NONE
-"hi SignColumn ctermbg=NONE guibg=NONE
+if $TERM ==# "xterm-kitty"
+    hi Normal     ctermbg=NONE
+    hi LineNr     ctermbg=NONE
+    hi SignColumn ctermbg=NONE
+endif
 
 
 """ Gui Settings ============================================================
