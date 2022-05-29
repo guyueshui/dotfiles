@@ -5,3 +5,16 @@
 	ui = auto
 [alias]
 	graph = log --graph --oneline --decorate=short
+[merge]
+	tool = vscode
+[mergetool "code"]
+	path = /usr/bin/code
+[difftool "code"]
+	cmd = "code --diff  "
+	path = /usr/bin/code
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+	cmd = code --wait $MERGED

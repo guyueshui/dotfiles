@@ -48,13 +48,34 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "fsPath": "/home/yychi/Documents/workspace/latex",
-                                        "external": "file:///home/yychi/Documents/workspace/latex",
-                                        "path": "/home/yychi/Documents/workspace/latex",
+                                        "external": "file:///home/yychi/dotfiles",
+                                        "path": "/home/yychi/dotfiles",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/Documents/workspace/latex"
+                                    "label": "~/dotfiles"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi",
+                                        "path": "/home/yychi",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "/home/yychi"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live",
+                                        "path": "/home/yychi/Documents/learn2live",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -77,6 +98,17 @@
                                     },
                                     "enabled": true,
                                     "label": "~/Documents/workspace/console/c++/new_start"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/workspace/latex",
+                                        "path": "/home/yychi/Documents/workspace/latex",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/workspace/latex"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -123,40 +155,106 @@
                                     "label": "~/Documents/workspace/now_work/Torch-InfoGAN [SSH: HP-WorkStation]"
                                 },
                                 {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Documents/workspace/now_work/Torch-InfoGAN",
-                                        "path": "/home/yychi/Documents/workspace/now_work/Torch-InfoGAN",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/workspace/now_work/Torch-InfoGAN"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Documents/workspace/now_work/BEGAN-pytorch-master",
-                                        "path": "/home/yychi/Documents/workspace/now_work/BEGAN-pytorch-master",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/workspace/now_work/BEGAN-pytorch-master"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Documents/workspace/console/python/netease-hw",
-                                        "path": "/home/yychi/Documents/workspace/console/python/netease-hw",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/workspace/console/python/netease-hw"
-                                },
-                                {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/workspace",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/workspace",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/workspace"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/plugins/dataview/main.js",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/plugins/dataview/main.js",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/plugins/dataview/main.js"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/hotkeys.json",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/hotkeys.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/hotkeys.json"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/graph.json",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/graph.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/graph.json"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/core-plugins.json",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/core-plugins.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/core-plugins.json"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/community-plugins.json",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/community-plugins.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/community-plugins.json"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/appearance.json",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/appearance.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/appearance.json"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/Documents/learn2live/.obsidian/app.json",
+                                        "path": "/home/yychi/Documents/learn2live/.obsidian/app.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Documents/learn2live/.obsidian/app.json"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/yychi/EXTRA/Android/sagit/ADM/Star/finhomepage.html",
+                                        "path": "/home/yychi/EXTRA/Android/sagit/ADM/Star/finhomepage.html",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/EXTRA/Android/sagit/ADM/Star/finhomepage.html"
                                 },
                                 {
                                     "id": "openRecentFile",
@@ -168,105 +266,6 @@
                                     },
                                     "enabled": true,
                                     "label": "~/.aria2/aria2.conf"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/bin/cht.sh",
-                                        "path": "/home/yychi/bin/cht.sh",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/bin/cht.sh"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/bin/rand_wallpaper.sh",
-                                        "path": "/home/yychi/bin/rand_wallpaper.sh",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/bin/rand_wallpaper.sh"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/bin/aria2c_add_trackers.sh",
-                                        "path": "/home/yychi/bin/aria2c_add_trackers.sh",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/bin/aria2c_add_trackers.sh"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Documents/workspace/console/python/yield_coroutine/yield_chain.py",
-                                        "path": "/home/yychi/Documents/workspace/console/python/yield_coroutine/yield_chain.py",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/workspace/console/python/yield_coroutine/yield_chain.py"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Documents/BlogHugo/content/post/python-metaclass.md",
-                                        "path": "/home/yychi/Documents/BlogHugo/content/post/python-metaclass.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/BlogHugo/content/post/python-metaclass.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc",
-                                        "path": "/home/yychi/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/.vim/bundle/vim-latex/ftplugin/latex-suite/texrc"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/README.md",
-                                        "path": "/home/yychi/README.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/README.md"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Downloads/chromeDownloads/CATGAN.ipynb",
-                                        "path": "/home/yychi/Downloads/chromeDownloads/CATGAN.ipynb",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Downloads/chromeDownloads/CATGAN.ipynb"
-                                },
-                                {
-                                    "id": "openRecentFile",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/yychi/Documents/BlogHugo/content/post/server-develop-preliminaries.md",
-                                        "path": "/home/yychi/Documents/BlogHugo/content/post/server-develop-preliminaries.md",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/Documents/BlogHugo/content/post/server-develop-preliminaries.md"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -377,13 +376,6 @@
                                 {
                                     "id": "workbench.action.selectProductIconTheme",
                                     "label": "&&Product Icon Theme"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
-                                {
-                                    "id": "workbench.userDataSync.actions.turnOn",
-                                    "label": "Turn on Settings Sync..."
                                 }
                             ]
                         }
@@ -398,10 +390,6 @@
                     {
                         "id": "workbench.action.closeActiveEditor",
                         "label": "&&Close Editor"
-                    },
-                    {
-                        "id": "workbench.action.closeFolder",
-                        "label": "Close &&Folder"
                     },
                     {
                         "id": "workbench.action.closeWindow",
@@ -597,7 +585,11 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleSidebarVisibility",
-                                    "label": "Show &&Side Bar"
+                                    "label": "Show &&Primary Side Bar"
+                                },
+                                {
+                                    "id": "workbench.action.toggleAuxiliaryBar",
+                                    "label": "Show Secondary Si&&de Bar"
                                 },
                                 {
                                     "id": "workbench.action.toggleStatusbarVisibility",
@@ -614,15 +606,11 @@
                                     "label": "Show &&Panel"
                                 },
                                 {
-                                    "id": "workbench.action.toggleAuxiliaryBar",
-                                    "label": "Show Si&&de Panel"
-                                },
-                                {
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
                                     "id": "workbench.action.toggleSidebarPosition",
-                                    "label": "&&Move Side Bar Right"
+                                    "label": "&&Move Primary Side Bar Left"
                                 },
                                 {
                                     "id": "submenuitem.32",
@@ -708,13 +696,6 @@
                                 {
                                     "id": "workbench.action.splitEditorRight",
                                     "label": "Split &&Right"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
-                                {
-                                    "id": "workbench.action.splitEditorInGroup",
-                                    "label": "Split in &&Group"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -808,12 +789,12 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "&&Word Wrap"
+                        "label": "&&Word Wrap",
+                        "checked": true
                     },
                     {
                         "id": "editor.action.toggleMinimap",
-                        "label": "Show &&Minimap",
-                        "checked": true
+                        "label": "Show &&Minimap"
                     },
                     {
                         "id": "breadcrumbs.toggle",
@@ -845,7 +826,8 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location"
+                        "label": "&&Last Edit Location",
+                        "enabled": false
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -855,6 +837,17 @@
                         "label": "Switch &&Editor",
                         "submenu": {
                             "items": [
+                                {
+                                    "id": "workbench.action.focusFirstSideEditor",
+                                    "label": "&&First Side in Editor"
+                                },
+                                {
+                                    "id": "workbench.action.focusSecondSideEditor",
+                                    "label": "&&Second Side in Editor"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
                                 {
                                     "id": "workbench.action.nextEditor",
                                     "label": "&&Next Editor"
@@ -914,45 +907,54 @@
                                 },
                                 {
                                     "id": "workbench.action.focusThirdEditorGroup",
-                                    "label": "Group &&3"
+                                    "label": "Group &&3",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "workbench.action.focusFourthEditorGroup",
-                                    "label": "Group &&4"
+                                    "label": "Group &&4",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "workbench.action.focusFifthEditorGroup",
-                                    "label": "Group &&5"
+                                    "label": "Group &&5",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
                                     "id": "workbench.action.focusNextGroup",
-                                    "label": "&&Next Group"
+                                    "label": "&&Next Group",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "workbench.action.focusPreviousGroup",
-                                    "label": "&&Previous Group"
+                                    "label": "&&Previous Group",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
                                     "id": "workbench.action.focusLeftGroup",
-                                    "label": "Group &&Left"
+                                    "label": "Group &&Left",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "workbench.action.focusRightGroup",
-                                    "label": "Group &&Right"
+                                    "label": "Group &&Right",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "workbench.action.focusAboveGroup",
-                                    "label": "Group &&Above"
+                                    "label": "Group &&Above",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "workbench.action.focusBelowGroup",
-                                    "label": "Group &&Below"
+                                    "label": "Group &&Below",
+                                    "enabled": false
                                 }
                             ]
                         }
@@ -1346,11 +1348,6 @@
                 "label": "Ctrl+W",
                 "userSettingsLabel": "ctrl+w"
             },
-            "workbench.action.closeFolder": {
-                "label": "Ctrl+K F",
-                "isNative": false,
-                "userSettingsLabel": "ctrl+k f"
-            },
             "workbench.action.closeWindow": {
                 "label": "Alt+F4",
                 "userSettingsLabel": "alt+f4"
@@ -1491,11 +1488,6 @@
                 "label": "Ctrl+NumPad0",
                 "isNative": false,
                 "userSettingsLabel": "ctrl+numpad0"
-            },
-            "workbench.action.splitEditorInGroup": {
-                "label": "Ctrl+K Ctrl+Shift+\\",
-                "isNative": false,
-                "userSettingsLabel": "ctrl+k ctrl+shift+\\"
             },
             "workbench.action.toggleEditorGroupLayout": {
                 "label": "Shift+Alt+0",
@@ -1729,8 +1721,7 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/yychi/Documents/workspace/latex",
-            "backupPath": "/home/yychi/.config/Code/Backups/e8ea1820fa426aed112af901430cd587",
+            "backupPath": "/home/yychi/.config/Code/Backups/1653840647949",
             "uiState": {
                 "mode": 1,
                 "x": 20,
@@ -1741,7 +1732,7 @@
         },
         "openedWindows": []
     },
-    "pickerWorkingDir": "/home/yychi/.aria2",
+    "pickerWorkingDir": "/home/yychi/EXTRA/Android/sagit/ADM/Star",
     "windowSplash": {
         "baseTheme": "vs-dark",
         "colorInfo": {
@@ -1755,7 +1746,7 @@
             "statusBarNoFolderBackground": "#68217a"
         },
         "layoutInfo": {
-            "sideBarSide": "left",
+            "sideBarSide": "right",
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
