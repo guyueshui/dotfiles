@@ -1,0 +1,127 @@
+{
+    //过滤不需要的文件
+    "files.exclude": {
+        "**/*.DS_Store": true,
+        "**/*.git": true,
+        "**/*.hg": true,
+        "**/*.svn": true,
+        "**/*.pyc": true,
+        "**/CVS": true,
+        "**/res": true,
+    },
+    "files.autoGuessEncoding": true,
+    "files.autoSave": "onFocusChange",
+    "editor.tabSize": 4,
+    "editor.fontSize": 16,
+    "editor.cursorStyle": "block",
+    "editor.detectIndentation": true,
+    "editor.accessibilitySupport": "off",
+    "editor.wordWrap": "off",
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "editor.fontFamily": "Consolas, Source Code Pro, 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.minimap.enabled": false,
+    "editor.dragAndDrop": false,
+    // "editor.cursorSmoothCaretAnimation": true,
+    // "editor.smoothScrolling": true,
+    // "workbench.list.smoothScrolling": true,
+    // "workbench.editor.wrapTabs": true,
+    "workbench.sideBar.location": "right",
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    // vim key rebinding
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "after": [
+                ":"
+            ]
+        }
+    ],
+    "vim.useCtrlKeys": true,
+    "terminal.integrated.rendererType": "dom",
+    // "terminal.integrated.fontSize": 18,
+    "latex-workshop.view.pdf.viewer": "tab",
+    /// cpp settings
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.formatting": "Disabled",
+    // 配置一下clangd插件
+    "clangd.arguments": [
+        // 在后台自动分析文件（基于complie_commands)
+        "--background-index",
+        // 标记compelie_commands.json文件的目录位置
+        // 关于complie_commands.json如何生成可见我上一篇文章的末尾
+        // https://zhuanlan.zhihu.com/p/84876003
+        // "--compile-commands-dir=build",
+        // 同时开启的任务数量
+        "-j=12",
+        // 告诉clangd用那个clang进行编译，路径参考which clang++的路径
+        "--query-driver=/usr/bin/clang++",
+        // clang-tidy功能
+        "--clang-tidy",
+        "--clang-tidy-checks=performance-*,bugprone-*",
+        // 全局补全（会自动补充头文件）
+        "--all-scopes-completion",
+        // 更详细的补全内容
+        "--completion-style=detailed",
+        // 补充头文件的形式
+        "--header-insertion=iwyu",
+        // pch优化的位置
+        "--pch-storage=disk",
+    ],
+    /// Python settings -------------------------------------------------------
+    //添加模块路径，不能用${workspaceFolder}, 直接填写绝对路径（以下根据自己项目路径做调整）
+    "python.autoComplete.extraPaths": [
+        "G:/codes/H73/simulator",
+        //     "/home/xxx/xxx/src/Server",
+        //     "/home/xxx/xxx/src/Server/Public",
+        //     "/home/xxx/xxx/src/Server/Lib"
+    ],
+    "python.languageServer": "Pylance",
+    // for flake8 config, see: https://km.netease.com/article/316990
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.autoImportCompletions": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnusedImport": "error",
+        // "reportImportCycles": "error",
+        "reportIncompatibleMethodOverride": "warning",
+        "reportIncompatibleVariableOverride": "warning",
+    },
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E,W,C, F401"
+    ],
+    "remote.SSH.remotePlatform": {
+        "开发服1": "linux"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.analysis.extraPaths": [
+        "G:/codes/H73/simulator"
+    ],
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "clangd.path": "/usr/bin/clangd",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": false,
+}

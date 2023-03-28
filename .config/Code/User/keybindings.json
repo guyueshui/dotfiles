@@ -1,0 +1,18 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+f",
+        "command": "-extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "alt+left",
+        "command": "history.showPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+right",
+        "command": "history.showNext",
+        "when": "editorTextFocus"
+    }
+]
