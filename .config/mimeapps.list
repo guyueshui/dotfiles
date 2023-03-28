@@ -1,12 +1,21 @@
 [Default Applications]
-x-scheme-handler/http=chromium.desktop
-x-scheme-handler/https=chromium.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=chromium.desktop
 x-scheme-handler/unknown=chromium.desktop
 x-scheme-handler/webcal=chromium.desktop
 application/ppdf=FoxitReader.desktop
-text/html=chromium.desktop
+text/html=firefox.desktop
 x-scheme-handler/irc=chromium.desktop
+x-scheme-handler/gitkraken=GitKraken.desktop
+x-scheme-handler/chrome=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+x-scheme-handler/baiduyunguanjia=baidunetdisk.desktop
 
 [Added Associations]
 application/x-bzip-compressed-tar=org.gnome.FileRoller.desktop;
@@ -29,6 +38,15 @@ text/csv=wps-office-et.desktop;
 application/wps-office.pdf=org.gnome.Evince.desktop;chromium.desktop;org.pwmt.zathura-pdf-mupdf.desktop;foxitreader.desktop;org.pwmt.zathura-pdf-poppler.desktop;wps-office-pdf.desktop;
 text/x-c++src=gvim.desktop;visual-studio-code.desktop;
 text/markdown=typora.desktop;visual-studio-code.desktop;
-text/html=chromium.desktop;
+text/html=chromium.desktop;firefox.desktop;
 application/pdf=org.gnome.Evince.desktop;foxitreader.desktop;org.pwmt.zathura-pdf-mupdf.desktop;evince-usercreated-1.desktop;
 audio/mpeg=mpv.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;

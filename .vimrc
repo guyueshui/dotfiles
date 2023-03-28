@@ -135,7 +135,7 @@ Plugin 'vim-latex/vim-latex'
 filetype plugin on
 
 " OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
+" filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.

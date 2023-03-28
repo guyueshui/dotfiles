@@ -11,10 +11,11 @@
 !.config/**/*rc
 !.config/**/*conf*
 !.config/**/*.json
+!.config/Code/User/settings.json
 #---[ ignore list ]---
 .config/shadowsocks
 .config/v2ray
 .config/qv2ray
-stoc.conf
+.config/BaiduPCS-Go
 .muttrc
 .msmtprc

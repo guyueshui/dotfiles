@@ -14,13 +14,14 @@
   ],
 
   // Custom key binding, which will override the default ones.
+  // see https://support.typora.io/Shortcut-Keys/#windows--linux for detail
   "keyBinding": {
     // for example: 
     // "Always on Top": "Ctrl+Shift+P"
+    // All other options are the menu items 'text label' displayed from each typora menu
   },
 
   "monocolorEmoji": false, //default false. Only work for Windows
-  "autoSaveTimer" : 3, // Deprecidated, Typora will do auto save automatically. default 3 minutes
   "maxFetchCountOnFileList": 500,
   "flags": [] // default [], append Chrome launch flags, e.g: [["disable-gpu"], ["host-rules", "MAP * 127.0.0.1"]]
 }

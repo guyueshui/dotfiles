@@ -18,3 +18,7 @@
 	cmd = code --wait --diff $LOCAL $REMOTE
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
+[gui]
+	fontui = -family 文泉驿正黑 -size 16 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Monaco -size 16 -weight normal -slant roman -underline 0 -overstrike 0
+	tabsize = 4

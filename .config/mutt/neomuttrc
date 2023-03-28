@@ -1,0 +1,175 @@
+# References
+# 1. https://www.bilibili.com/video/BV1w44y1V71U?t=370.3
+# 2. xxx
+
+##########################################################################
+#  IMAP - Neomutt configuration
+##########################################################################
+# -------------------------------------------------------------------------
+# Name: realname 
+# -------------------------------------------------------------------------
+# This variable specifies what “real” or “personal” name should be used
+# when sending mes‐ sages.  If not specified, then the user's “real name”
+# will  be  read  from  /etc/passwd.   This option will not be used, if
+# “$from” is set.
+# -------------------------------------------------------------------------
+
+# set realname = "Yychi Fyu"
+
+
+# -------------------------------------------------------------------------
+# Name: from
+# -------------------------------------------------------------------------
+# When set, this variable contains a default “from” address.  It can be
+# overridden  using “my_hdr” (including from a “send-hook”) and
+# $reverse_name.  This variable is ignored if $use_from is unset.  If not
+# specified, then it may be read from the environment variable $EMAIL.
+# -------------------------------------------------------------------------
+
+# set from="guyueshui002@163.com"
+# -------------------------------------------------------------------------
+# Name: folder
+# -------------------------------------------------------------------------
+# Specifies the default location of your mailboxes.  A “+” or “=” at the
+# beginning  of  a pathname  will be expanded to the value of this
+# variable.  Note that if you change this variable (from the default) value
+# you need to make  sure  that  the  assignment  occurs before you use “+”
+# or “=” for any other variables since expansion takes place when han‐
+# dling the “mailboxes” command.
+# -------------------------------------------------------------------------
+
+# set folder=~/Mail
+# set folder="imaps://imap.163.com/"
+set header_cache = ~/.cache/mutt_header_cache
+# set tmpdir = /dev/shm
+# set folder = ~/Mail
+# set mbox_type = Maildir
+# set spoolfile=+INBOX
+# set mbox=+Archive
+# set record=+Sent
+# set postponed=+Drafts
+# set trash=+Trash
+# mailboxes +INBOX +Sent +Spam +Drafts #+Send +Spam # +Archive +Sent +Drafts +Trash +Local
+# -------------------------------------------------------------------------
+# Name: spoolfile
+# -------------------------------------------------------------------------
+# If your spool mailbox is in a non-default place where NeoMutt cannot find
+# it,  you  can specify its location with this variable.  If not specified,
+# then the environment variables $MAIL and $MAILDIR will be checked.  
+# -------------------------------------------------------------------------
+
+#set spoolfile = ""
+#set spoolfile="+folders"
+# -------------------------------------------------------------------------
+# Name: mailboxes
+# -------------------------------------------------------------------------
+# The mailboxes  specifies  folders which can receive mail and which will
+# be checked for new messages. When changing folders, pressing space will
+# cycle through folders with new mail.  The named-mailboxes is an
+# alternative to mailboxes that allows adding a description for a mailbox.
+# NeoMutt can be configured to display the description instead of the
+# mailbox path.  The unmailboxes  command  is used to remove a file name
+# from the list of folders which can receive mail.  If “*” is specified as
+# the file name, the list is emptied.
+# -------------------------------------------------------------------------
+
+# unmailboxes *
+# mailboxes +Drafts +Sent +Spam
+# mailboxes $spoolfile
+# mailboxes imaps://imap.163.com/INBOX
+# mailboxes                    "=INBOX"
+
+
+
+# set record                   = "=Sent Items"
+# set postponed                = "=Drafts"
+# set trash                    = "=Trash"
+# -------------------------------------------------------------------------
+# Name: imap_user 
+# -------------------------------------------------------------------------
+# The name of the user whose mail you intend to access on the IMAP server.
+# This variable defaults to your user name on the local machine.
+
+# set imap_user = "guyueshui002"
+
+# -------------------------------------------------------------------------
+# Name: imap_pass 
+# -------------------------------------------------------------------------
+# Specifies the password for your IMAP account.  If unset, NeoMutt will
+# prompt you for your password when you invoke the <imap-fetch-mail>
+# function or try to open an IMAP folder. 
+# 
+# Warning: you should only use this option when you are on a fairly secure
+# machine, because the superuser can read your neomuttrc even if you are
+# the only one who can read the file.
+
+# config smtp for sending mail
+# set imap_pass = "`gpg -qd ~/.config/mutt/account_163.gpg`"
+set certificate_file = /etc/ssl/certs/ca-certificates.crt
+# set smtp_url = "smtp://$imap_user:$imap_pass@smtp.163.com:465"
+# set smtp_url = "smtp://$imap_user:$imap_pass@smtp.163.com"
+
+
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+
+##################################################
+# cf. https://coda.world/neomutt#%E9%85%8D%E7%BD%AE-neomutt
+##################################################
+# mail list
+set sleep_time = 0
+set assumed_charset = "utf-8:GB18030"
+set date_format = "%m/%d"
+set index_format = "%4C  [%Z]  %D  %-15.15F  %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set collapse_all
+
+# sidebar
+set sidebar_width=15
+
+# unset help
+set status_on_top
+set status_format = "-%r-[%f]---[Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+
+# pager
+set pager_index_lines = 6
+set pager_context = 3
+set pager_stop
+set tilde
+unset markers
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+alternative_order text/plain text/enriched text/html
+set display_filter="sed -e '/\\[-- Type: text.* --\\]/d' | sed -e '/\\[-- Autoview.* --\\]/d' | sed -e '/\\[-- Type.* --\\]/d' |  sed -e '/\\[-- .*unsupported.* --\\]/d' | sed -e '/\\[-- Attachment #[0-9] --\\]/d' | sed -e 's/Attachment #[0-9]: //g' | sed '/./,/^$/!d'"
+
+# write settings
+set realname="YychiFyu"                # 撰写新邮件时使用的名字
+# set from="i@coda.world"                # 撰写新邮件时使用的邮件地址
+set forward_format="Fwd: %s"           # 转发的格式为 "Fwd: 标题"
+set forward_quote                      # 转发时将正文放到引用中
+set attribution="\n\nOn %d, %n wrote:" # 回复时引用前文的格式
+set reverse_name                       # 优先使用收件人的身份回复，而不是使用撰写新邮件时的地址
+set fast_reply                         # 回复时不会询问收件人和标题
+set include                            # 回复时附上前文
+set send_charset="utf-8"               # 发送邮件时使用的编码
+# set editor="code -w -n"                # 编辑器，我使用的是 vscode，'-w'代表文件关闭后再返回命令
+set edit_headers                       # 允许编辑 Header (To: CC: Subject:)
+
+########################################################
+#  cf. https://lin.moe/tutorial/2022/02/neomutt_smtp/  #
+########################################################
+set mailcap_path = "~/.config/mutt/mailcap"
+auto_view text/html
+
+# color scheme
+source ./colorscheme/neonwolf
+
+## qq
+source "./account/qq/basic"
+#folder-hook $folder 'source ./account/qq/basic'
+
+# 163
+# source "./account/163/basic"
+#folder-hook
