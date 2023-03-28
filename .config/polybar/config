@@ -106,7 +106,7 @@ module-margin-right = ${bar/top.module-margin-right}
 font-0 = ${bar/top.font-0}
 font-1 = ${bar/top.font-1}
 
-modules-left = i3
+modules-left = i3 menu-apps
 modules-right = wlan memory cpu date
 
 ;[bar/bar]
@@ -203,9 +203,9 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 format-connected = <label-connected>
-format-connected-prefix = " "
+format-connected-prefix = ""
 format-connected-prefix-foreground = #b6a49b
-label-connected = %upspeed:5% %downspeed:5%
+label-connected = %essid% %upspeed:5% %downspeed:5%
 format-disconnected = <label-disconnected>
 label-disconnected = not connected
 label-disconnected-foreground = #66ffffff
@@ -688,5 +688,38 @@ menu-2-0-exec = notify-send -u low "sub-menu action 2"
 menu-2-1 = Cancel
 menu-2-1-foreground = #fff51f
 menu-2-1-exec = menu-open-0
+
+[module/menu-apps]
+type = custom/menu
+
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Commands will be executed using "/bin/sh -c $COMMAND"
+
+label-open = Apps
+label-close = X
+label-separator = /
+
+menu-0-0 = Browsers
+; menu-0-0-exec = #menu-apps.open.1
+menu-0-0-exec = menu-open-1
+menu-0-1 = Multimedia
+; menu-0-1-exec = #menu-apps.open.2
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = Firefox
+menu-1-0-exec = firefox
+menu-1-1 = Chromium
+menu-1-1-exec = chromium
+
+menu-2-0 = Gimp
+menu-2-0-exec = gimp
+menu-2-1 = Scrot
+menu-2-1-exec = scrot
 
 ; vim:ft=dosini

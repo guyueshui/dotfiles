@@ -75,7 +75,7 @@ bindsym ctrl+Mod1+comma exec mpc prev
 # screen shot
 # bindsym Print exec scrot -q 1 -e 'mv $f ~/Pictures'
 bindsym Print exec gnome-screenshot -i
-bindsym ctrl+Mod1+p exec flameshot gui
+bindsym Mod1+a exec flameshot gui
 # start Explorer
 bindsym $mod+e exec nautilus -w
 # start dmenu (a program launcher)
@@ -293,7 +293,7 @@ client.unfocused #333333 #333333 #888888 #292d2e
 
 # --------------------autostart tasks--------------------------
 #### input method ####
-exec fcitx
+exec fcitx5
 #exec sogou-qimpanel
 #exec sogou-qimpanel-watchdog
 ######################
