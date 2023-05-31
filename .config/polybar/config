@@ -203,9 +203,12 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 format-connected = <label-connected>
-format-connected-prefix = ""
 format-connected-prefix-foreground = #b6a49b
-label-connected = %essid% %upspeed:5% %downspeed:5%
+; format-connected-prefix = ""
+; label-connected = %essid% %upspeed:5% %downspeed:5%
+; For screen who has limited width, hide the ssid.
+format-connected-prefix = " "
+label-connected = %upspeed:5% %downspeed:5%
 format-disconnected = <label-disconnected>
 label-disconnected = not connected
 label-disconnected-foreground = #66ffffff

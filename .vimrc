@@ -206,7 +206,7 @@ set scrolloff=3	    " 3 lines to top/bottom
 "set smartindent	" 自动缩进
 set showcmd         " show commands
 " file encoding families, see: https://www.zhihu.com/question/22363620
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+set fileencodings=ucs-bom,utf-8,gbk,big5,gb18030,latin1,utf-16
 set colorcolumn=80  " draw a vertical line at column 80
 """ filetype specification, see: https://segmentfault.com/q/1010000000453410/
 autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set ai

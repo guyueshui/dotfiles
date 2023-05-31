@@ -166,10 +166,13 @@ auto_view text/html
 # color scheme
 source ./colorscheme/neonwolf
 
-## qq
-source "./account/qq/basic"
-#folder-hook $folder 'source ./account/qq/basic'
+# Folder hooks
+folder-hook 'account.163' 'source ~/.config/mutt/account.163'
+folder-hook 'account.qq' 'source ~/.config/mutt/account.qq'
 
-# 163
-# source "./account/163/basic"
-#folder-hook
+# Default account
+source "~/.config/mutt/account.qq"
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ./account.qq<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ./account.163<enter><change-folder>!<enter>'

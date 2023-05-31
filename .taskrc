@@ -34,3 +34,4 @@ data.location=~/.task
 # taskd.certificate=~/.task/freecinc_8885701a.cert.pem
 # taskd.ca=~/.task/freecinc_8885701a.ca.pem
 # taskd.credentials=FreeCinc\/freecinc_8885701a\/a0ac7cfd-dbdf-45d4-b671-d996dcbb09c0
+news.version=2.6.0
