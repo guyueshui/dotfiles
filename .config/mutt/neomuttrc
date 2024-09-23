@@ -171,7 +171,7 @@ folder-hook 'account.163' 'source ~/.config/mutt/account.163'
 folder-hook 'account.qq' 'source ~/.config/mutt/account.qq'
 
 # Default account
-source "~/.config/mutt/account.qq"
+source "~/.config/mutt/account.163"
 
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ./account.qq<enter><change-folder>!<enter>'

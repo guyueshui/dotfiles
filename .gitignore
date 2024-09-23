@@ -4,14 +4,13 @@
 !*.[Xx]resources
 !*.conf
 !*.sh
+!*rc
 !.aria2/
-!*config*
-!*[a-zA-Z]*rc
+!.config
 !.config/*
+!**/*conf*/**/*.json
 !.config/**/*rc
 !.config/**/*conf*
-!.config/**/*.json
-!.config/Code/User/settings.json
 #---[ ignore list ]---
 .config/shadowsocks
 .config/v2ray

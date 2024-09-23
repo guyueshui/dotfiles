@@ -116,21 +116,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# toggle tiling / floating
-bindsym Mod1+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
-
 # scratchpad
 bindsym ctrl+Mod1+minus move scratchpad
 bindsym Mod1+minus scratchpad show
@@ -192,13 +177,23 @@ bindsym $mod+x layout tabbed
 # 切换到平铺布局（竖直/水平）
 bindsym $mod+c layout toggle split
 # 在所有布局中轮回切换
-# bindsym $mod+x layout toggle all
+bindsym $mod+b layout toggle all
 # 窗口切换到全屏
-# bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 # 窗口切换到浮动
-# bindsym $mod+space floating toggle
+bindsym $mod+space floating toggle
 # 窗口切换为粘滞
 # bindsym $mod+g sticky toggle
+
+# split in horizontal orientation
+bindsym $mod+h split h
+# split in vertical orientation
+bindsym $mod+v split v
+# toggle tiling / floating
+# bindsym Mod1+Shift+space floating toggle
+# change focus between tiling / floating windows
+# bindsym Mod1+space focus mode_toggle
+
 
 # move focused container to workspace
 bindsym Mod1+Shift+1 move container to workspace $WS1

@@ -16,5 +16,10 @@ export XMODIFIERS=@im=fcitx
 # Load X resource database
 xrdb -load ~/.Xresources
 
-# exec gnome-session
+# Uncomment this to start i3
 exec i3
+
+# Uncomment this to start gnome
+# export XDG_SESSION_TYPE=x11
+# export GDK_BACKEND=x11
+# exec gnome-session

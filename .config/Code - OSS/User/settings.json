@@ -60,19 +60,19 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "C_Cpp.intelliSenseEngine": "Disabled",
     "C_Cpp.formatting": "Disabled",
-    // 配置一下clangd插件
+    // 配置一下 clangd 插件
     "clangd.arguments": [
-        // 在后台自动分析文件（基于complie_commands)
+        // 在后台自动分析文件（基于 complie_commands)
         "--background-index",
-        // 标记compelie_commands.json文件的目录位置
-        // 关于complie_commands.json如何生成可见我上一篇文章的末尾
+        // 标记 compelie_commands.json 文件的目录位置
+        // 关于 complie_commands.json 如何生成可见我上一篇文章的末尾
         // https://zhuanlan.zhihu.com/p/84876003
         // "--compile-commands-dir=build",
         // 同时开启的任务数量
         "-j=12",
-        // 告诉clangd用那个clang进行编译，路径参考which clang++的路径
+        // 告诉 clangd 用那个 clang 进行编译，路径参考 which clang++的路径
         "--query-driver=/usr/bin/clang++",
-        // clang-tidy功能
+        // clang-tidy 功能
         "--clang-tidy",
         "--clang-tidy-checks=performance-*,bugprone-*",
         // 全局补全（会自动补充头文件）
@@ -81,7 +81,7 @@
         "--completion-style=detailed",
         // 补充头文件的形式
         "--header-insertion=iwyu",
-        // pch优化的位置
+        // pch 优化的位置
         "--pch-storage=disk",
     ],
     /// Python settings -------------------------------------------------------
@@ -120,10 +120,15 @@
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.recipe.default": "lastUsed",
-    "clangd.path": "/usr/bin/clangd",
+    "clangd.path": "/home/yychi/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.codeLens.enabled": false,
-    "diffEditor.ignoreTrimWhitespace": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.inlayHints.enabled": "on",
+    "githd.logView.displayExpressStatus": false,
+    "githd.blameView.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.experimental.showMoves": true,
+    "git.openRepositoryInParentFolders": "never",
 }
