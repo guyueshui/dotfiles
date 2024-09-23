@@ -14,7 +14,7 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>59.934</rate>
+          <rate>59.933879852294922</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -33,7 +33,7 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>60.000</rate>
+          <rate>60</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -54,7 +54,7 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>59.963</rate>
+          <rate>59.963344573974609</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -75,7 +75,7 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>60.000</rate>
+          <rate>60</rate>
         </mode>
       </monitor>
       <monitor>
@@ -88,41 +88,7 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>59.934</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-  </configuration>
-  <configuration>
-    <logicalmonitor>
-      <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <primary>yes</primary>
-      <monitor>
-        <monitorspec>
-          <connector>eDP1</connector>
-          <vendor>SHP</vendor>
-          <product>0x1447</product>
-          <serial>0x00000000</serial>
-        </monitorspec>
-        <mode>
-          <width>1920</width>
-          <height>1080</height>
-          <rate>59.934</rate>
-        </mode>
-      </monitor>
-      <monitor>
-        <monitorspec>
-          <connector>HDMI2</connector>
-          <vendor>SKG</vendor>
-          <product>H27V22</product>
-          <serial>0x00000001</serial>
-        </monitorspec>
-        <mode>
-          <width>1920</width>
-          <height>1080</height>
-          <rate>120.000</rate>
+          <rate>59.933879852294922</rate>
         </mode>
       </monitor>
     </logicalmonitor>
