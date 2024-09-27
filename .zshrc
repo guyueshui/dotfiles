@@ -428,3 +428,9 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 
 # add tools from gitignore.io
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+# an easy way to test microphone
+# cf. https://bbs.archlinux.org/viewtopic.php?id=196525
+function test-microphone() {
+    arecord -vv -f dat /dev/null
+}

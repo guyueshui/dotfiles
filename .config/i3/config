@@ -29,6 +29,8 @@ font pango:monospace 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+# drag titlebar of tiling window to their wanted position
+tiling_drag titlebar
 
 # start a terminal
 bindsym $mod+Return exec urxvt -sh 25
@@ -264,23 +266,38 @@ client.background       	#111111
 # focused border-1
 # class                 border  backgr. text    indicator child_border
 #! client.focused          #B5BD68 #B5BD68 #ffffff #B5BD68   #B5BD68
-#! client.focused_inactive #282A2E #282A2E #ffffff #282A2E #282A2E
+#! client.focused_inactive #282A2E #282A2E #ffffff #282A2E   #282A2E
 
 # focused border-2(white.)(prefer)
 # class                 border  backgr. text    indicator child_border
-client.focused          #888888 #dddddd #222222 #2e9ef4
-client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
+client.focused          #888888   #c6fce6 #222222 #2e9ef4 #66ccff
+client.focused_inactive #33333388 #555555 #bbbbbb #484e50
+client.unfocused        #33333388 #333333 #888888 #292d2e
 
 # focused border-3(orange)
-#!client.focused          #F7CA88 #F7CA88 #ffffff #F7CA88
-#!client.focused_inactive #000000 #000000 #ffffff #ffffff
-#!client.unfocused #000000 #000000 #ffffff #ffffff
+#! client.focused          #F7CA88 #F7CA88 #000000 #F7CA88
+#! client.focused_inactive #000000 #000000 #ffffff #ffffff
+#! client.unfocused #000000 #000000 #ffffff #ffffff
 
 # focused border-4(blue)(white background)
-#!client.focused          #888a85 #396EB4 #ffffff #2e9ef4
-#!client.focused_inactive #888a85 #E4E4E4 #888a85 #484e50
-#!client.unfocused #888a85 #E4E4E4 #888a85 #484e50
+#! client.focused          #888a85 #396EB4 #ffffff #2e9ef4
+#! client.focused_inactive #888a85 #E4E4E4 #888a85 #484e50
+#! client.unfocused #888a85 #E4E4E4 #888a85 #484e50
+
+# focused border-5(i3 example)
+# class                 border  backgr. text    indicator child_border
+#! client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+#! client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+#! client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#! client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#! client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+# customizations by yychi, cf. https://i3wm.org/docs/userguide.html#pango_markup
+# print window titles of firefox windows red
+#! for_window [class="(?i)firefox"] title_format "<span foreground='green'>%title</span>"
+
+# enable window icons for all windows with extra horizontal padding
+for_window [all] title_window_icon padding 3px
 
 # --------------------color ends------------------------------
 
