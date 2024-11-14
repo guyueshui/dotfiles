@@ -16,5 +16,7 @@
 .config/v2ray
 .config/qv2ray
 .config/BaiduPCS-Go
+.config/Kingsoft
+.config/QtProject.conf
 .muttrc
 .msmtprc
