@@ -141,6 +141,7 @@ image/svg+xml=org.gnome.eog.desktop
 image/svg+xml-compressed=org.gnome.eog.desktop
 image/vnd.wap.wbmp=org.gnome.eog.desktop
 image/x-icns=org.gnome.eog.desktop
+x-scheme-handler/clash=clash-verge.desktop
 
 [Added Associations]
 application/x-bzip-compressed-tar=org.gnome.FileRoller.desktop;
@@ -286,3 +287,4 @@ image/svg+xml=org.gnome.eog.desktop;
 image/svg+xml-compressed=org.gnome.eog.desktop;
 image/vnd.wap.wbmp=org.gnome.eog.desktop;
 image/x-icns=org.gnome.eog.desktop;
+application/octet-stream=gvim.desktop;

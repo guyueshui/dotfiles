@@ -10,14 +10,12 @@
         "command": "-extension.vim_ctrl+p",
         "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
     },
-    // {
-    //     "key": "alt+left",
-    //     "command": "history.showPrevious",
-    //     "when": "editorTextFocus"
-    // },
-    // {
-    //     "key": "alt+right",
-    //     "command": "history.showNext",
-    //     "when": "editorTextFocus"
-    // }
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateBack",
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.navigateForward",
+    }
 ]

@@ -30,7 +30,7 @@ check_aria2_conf()
 
 download_trackers()
 {
-    # git clone $SOURCE_URL $SOURCE_PATH
+    git clone $SOURCE_URL $SOURCE_PATH
     cd $SOURCE_PATH
     out=$(echo $(grep . $CHOSEN_FILE) | sed 's/ /,/g')
     echo "# auto added trackers at $(date)" >> $CONF_FILE

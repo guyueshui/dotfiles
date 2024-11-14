@@ -75,19 +75,19 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plugin 'Lokaltog/vim-powerline'
 
 """ 自动补全模块 ------------------------------------------
-Plugin 'Valloric/YouCompleteMe'
-
-" see for reference:
-"   https://github.com/ycm-core/YouCompleteMe#options 
-let g:ycm_use_clangd = 1    " disable clangd
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf = '/home/yychi/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-let g:ycm_error_symbol = 'E>'
-let g:ycm_warning_symbol = 'W>'
-noremap <leader>c :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F4> :YcmDiags<CR>
+"Plugin 'Valloric/YouCompleteMe'
+"
+"": see for reference:
+"":   https://github.com/ycm-core/YouCompleteMe#options 
+"let g:ycm_use_clangd = 1    " disable clangd
+"let g:ycm_server_python_interpreter = '/usr/bin/python3'
+"let g:ycm_global_ycm_extra_conf = '/home/yychi/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+"let g:ycm_error_symbol = 'E>'
+"let g:ycm_warning_symbol = 'W>'
+"noremap <leader>c :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+"nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nmap <F4> :YcmDiags<CR>
 
 
 """ color scheme ------------------------------------------

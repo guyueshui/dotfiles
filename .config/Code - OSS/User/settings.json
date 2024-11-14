@@ -117,7 +117,6 @@
     "python.analysis.extraPaths": [
         "G:/codes/H73/simulator"
     ],
-    "bracket-pair-colorizer-2.depreciation-notice": false,
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.recipe.default": "lastUsed",
     "clangd.path": "/home/yychi/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
@@ -126,9 +125,9 @@
     "gitlens.codeLens.enabled": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.inlayHints.enabled": "on",
-    "githd.logView.displayExpressStatus": false,
-    "githd.blameView.enabled": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "diffEditor.experimental.showMoves": true,
     "git.openRepositoryInParentFolders": "never",
+    "autocorrect.formatOnSave": false,
+    "window.titleBarStyle": "custom", // temporary fix file menu crash, see: https://github.com/microsoft/vscode/issues/232723#issuecomment-2449529795
 }
