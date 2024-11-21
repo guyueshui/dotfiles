@@ -1,19 +1,32 @@
 #!/bin/bash
+# author: yychi
+# date: 2024-11-21
+
+set -e # exit when error
 
 _say_what_i_do() {
 cat << COMMENT
 This script is used to backup some folders from mobile phone to here (the
 directory of a backup disk). To achieve this, you should
 
-1. have \`rsync\` installed in your PC;
+1. have \`rsync\` installed **BOTH** on your PC and phone;
 2. start a ssh server on your mobile phone, i.e., SSHelper or Termux;
 3. config your ssh login via .ssh/config and ssh-copy-id such that you can
-   login your mobile simply with \`ssh munch\`.
+   login your PC (and/or mobile) simply with \`ssh <hostname>\`.
 
 See: https://askubuntu.com/a/343740
 
+To configure those directories you want to backup, just modify the
+\`folders_to_sync\` variable.
+
+-------------------------------------------------------------------------------
+
 Usage:
-    $0 <local_storage_dir>
+    $0 <backup|restore>
+    
+    backup  	Backup phone to remote directory.
+    restore	Restore from remote to phone.
+
 COMMENT
 }
 
@@ -22,13 +35,9 @@ notify() {
 }
 
 
-set -e # exit when error
-
-#exit 23
-
-termux_map_root="~/storage/shared"
+termux_map_root=~/storage/shared
 local_storage="/srv/alist/Android/munch/"
-remote_root="dell-inspiron:$local_storage"
+remote_root="dell-inspiron-frp:$local_storage"
 folers_to_sync=(
     Pictures
     Snapseed
@@ -79,14 +88,12 @@ pull_phone_to_local() {
 }
 
 
-if [[ "$1" =~ (usage|-h|--help) ]]; then
-    _say_what_i_do
-    exit 0
-fi
-
-op=$1
 func=
-case op in
+case "$1" in
+    -\?|-h|--help|--usage)
+        _say_what_i_do
+        exit 0
+        ;;
     "backup")
         notify "backup on phone"
         func=push_phone_to_remote
@@ -96,11 +103,18 @@ case op in
         func=pull_remote_to_phone
         ;;
     *)
-        notfiy "input is invalid"
+        notify "input is invalid"
         _say_what_i_do
         exit 1
+        ;;
 esac
 
+# confirm excute
+read -re -p "Ready to excute? (y/n) " CHOICE
+if ! [[ "${CHOICE}" =~ (Y|y) ]]; then
+    notify "aborted!"
+    exit 1
+fi
 
 for folder in ${folers_to_sync[*]}; do
     $func $folder 
