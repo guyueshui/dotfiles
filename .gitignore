@@ -11,6 +11,7 @@
 !**/*conf*/**/*.json
 !.config/**/*rc
 !.config/**/*conf*
+!bin
 #---[ ignore list ]---
 .config/shadowsocks
 .config/v2ray
@@ -18,5 +19,6 @@
 .config/BaiduPCS-Go
 .config/Kingsoft
 .config/QtProject.conf
+.config/Foxit Software
 .muttrc
 .msmtprc
