@@ -31,13 +31,20 @@ COMMENT
 }
 
 notify() {
-    echo "--- $1"
+    echo "--- $*"
 }
 
+if [ -n "$MY_REMOTE_DEV" ] && [ "$MY_REMOTE_DEV"=="mibook" ]; then
+	# Use MiBook
+	local_storage="/home/yychi/EXTRA/Android/munch/device_sdcard/"
+	remote_root="mi-book:$local_storage"
+else
+	# Use dell-inspiron
+	local_storage="/srv/alist/Android/munch/"
+	remote_root="dell-inspiron-frp:$local_storage"
+fi
 
 termux_map_root=~/storage/shared
-local_storage="/srv/alist/Android/munch/"
-remote_root="dell-inspiron-frp:$local_storage"
 folers_to_sync=(
     Pictures
     Snapseed
@@ -109,6 +116,7 @@ case "$1" in
         ;;
 esac
 
+echo "Backup to $remote_root"
 # confirm excute
 read -re -p "Ready to excute? (y/n) " CHOICE
 if ! [[ "${CHOICE}" =~ (Y|y) ]]; then

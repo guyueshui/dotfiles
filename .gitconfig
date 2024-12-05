@@ -22,3 +22,6 @@
 	fontui = -family 文泉驿正黑 -size 16 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family Monaco -size 16 -weight normal -slant roman -underline 0 -overstrike 0
 	tabsize = 4
+[core]
+    # diff 文件显示中文
+	quotepath = false

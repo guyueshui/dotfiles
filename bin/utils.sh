@@ -4,7 +4,7 @@
 
 notify()
 {
-    echo "--- $1"
+    echo "--- $*"
 }
 
 log_time()
@@ -43,3 +43,9 @@ clean_mem_cache()
     fi
 }
 
+sync_folder()
+{
+    notify "sync... $1 to $2"
+    rsync -auh --progress --size-only --exclude=".*" \
+        $1 $2
+}
