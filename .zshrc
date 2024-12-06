@@ -246,8 +246,8 @@ zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directori
 ##行编辑高亮模式 {{{
 # Ctrl+@ 设置标记，标记和光标点之间为 region
 zle_highlight=(region:bg=magenta #选中区域
-special:bold      #特殊字符
-isearch:underline)#搜索时使用的关键字
+special:bold       #特殊字符
+isearch:underline) #搜索时使用的关键字
 #}}}
  
 ##空行(光标在行首)补全 "cd " {{{
@@ -330,7 +330,7 @@ alias top10='print -l  ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 #hash -d D="/home/ayumi/Documents"
 hash -d ws="/home/yychi/Documents/workspace/"
 hash -d blog="/home/yychi/Documents/BlogHugo/"
-hash -d nutstore="/home/yychi/我的坚果云/MiBook/Documents/"
+hash -d nutstore="/home/yychi/我的坚果云/Documents/"
 #}}}
  
 ##for Emacs {{{
@@ -373,6 +373,9 @@ bindkey "^[[11~" arith-eval-echo
 #}}}
  
 ####{{{
+
+# source my scripts, yychi@2024-12-05
+source ~/bin/utils.sh
 function timeconv { date -d @$1 +"%Y-%m-%d %T" }
  
 # }}}
@@ -423,17 +426,6 @@ check-cmd-backward-delete-char() { zle .backward-delete-char && recolor-cmd }
 zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
-transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
-
-# add tools from gitignore.io
-function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
-
-# an easy way to test microphone
-# cf. https://bbs.archlinux.org/viewtopic.php?id=196525
-function test-microphone() {
-    arecord -vv -f dat /dev/null
-}
 
 PATH="/home/yychi/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/yychi/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
