@@ -43,12 +43,13 @@ URxvt.inputMethod:fcitx
 !URxvt.shading:                  138
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                   false
+URxvt.iso14755_52:                false
 URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
 URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
 !!颜色设置
 URxvt.depth:32
 !!中括号内数表示透明度
-URxvt.background:[70]black
+URxvt.background:[85]black
 URxvt.foreground:#ffffff
 URxvt.colorBD:Gray95
 URxvt.colorUL:Green
@@ -61,13 +62,14 @@ URxvt.color12:DodgerBlue
 URxvt.color14:Cyan2
 URxvt.color15:Gray95
 !!URL操作
-URxvt.urlLauncher:chromium
+URxvt.urlLauncher:/usr/bin/chromium
 URxvt.matcher.button:1
 Urxvt.perl-ext-common:matcher
 !!滚动条设置
-URxvt.scrollBar:False
-URxvt.scrollBar_floating:False
-URxvt.scrollstyle:plain
+URxvt*scrollBar:false
+URxvt*scrollBar_floating:false
+URxvt*scrollBar_right:false
+URxvt*scrollstyle:plain
 !!滚屏设置
 URxvt.mouseWheelScrollPage:False
 URxvt.scrollTtyOutput:False
