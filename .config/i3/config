@@ -158,6 +158,8 @@ for_window [class="xpad"] floating enable
 for_window [class="netease-cloud-music"] floating enable
 for_window [class="GoldenDict"] floating enable
 for_window [class="qv2ray"] floating enable
+for_window [class="wechat"] floating enable
+for_window [class="QQ"] floating enable
 
 
 # switch to workspace
@@ -327,6 +329,8 @@ exec --no-startup-id picom --backend=xrender &
 #exec --no-startup-id volumeicon &
 exec --no-startup-id nm-applet &
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# blue light filter
+exec redshift-gtk &
 
 # status bar
 #bar {
@@ -360,5 +364,8 @@ smart_borders on
 # i3 gap and border ends
 
 
-new_window 1pixel
+# Title bar size in split mode
+# cf. https://i3wm.org/docs/userguide.html
+#     4.12. Default border style for new windows
+default_border pixel 1
 focus_follows_mouse no
