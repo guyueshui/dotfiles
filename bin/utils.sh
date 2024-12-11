@@ -11,7 +11,7 @@ log_time() {
     date +"%F %T.%3N"
 }
 
-# get the base directory of the give path
+# Get the base directory of the give path.
 get_base_dir() {
     dirname $(readlink -f $1)
 }
@@ -22,6 +22,23 @@ get_excute_dir() {
 
 get_excute_dir2() {
     cd $(dirname $0); pwd
+}
+
+# Test if an array contains an element.
+# CREDITS: https://stackoverflow.com/a/47541882
+#
+# Pass the correct the arguments like this (mind the double-quotes):
+# is_array_element "$elem" "${array[@]}"
+is_array_element() {
+    local elem="$1"
+    shift
+    # use the command exit value as the return value
+    printf '%s\0' "$@" | grep -qxzF -- "${elem}"
+    return
+
+    # or use alias
+    local array=("$@")
+    printf '%s\0' "${array[@]}" | grep -qxzF -- "${elem}"
 }
 
 clean_mem_cache() {
@@ -59,7 +76,7 @@ function rsync_phone {
     ~/bin/rsync_phone.sh $*
 }
 
-# an easy way to test microphone
+# An easy way to test microphone.
 # cf. https://bbs.archlinux.org/viewtopic.php?id=196525
 function test-microphone() {
     arecord -vv -f dat /dev/null
@@ -81,8 +98,24 @@ copy_as_hugo_post() {
     ~/bin/copy_as_hugo_post.py $*
 }
 
-# list function names of a script
+# List function names of a script.
 # https://unix.stackexchange.com/a/260659
 function list_my_scripts() {
     bash -c '. ~/bin/utils.sh; typeset -F' | cut -d' ' -f3
+}
+
+# Download bdy files via alist link.
+download_from_bdy() {
+    echo "Download bdy files via alist link.\n"
+    curl -LX GET "$1" \
+        -H 'User-Agent:pan.baidu.com' \
+        -O \
+        -C -
+}
+
+# Handy way to proxy in terminal.
+proxydo() {
+    export ALL_PROXY=http://127.0.0.1:8080
+    $@
+    unset ALL_PROXY
 }

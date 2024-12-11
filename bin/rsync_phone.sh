@@ -61,6 +61,12 @@ folers_to_sync=(
     Movies
     )
 
+# folders in this array will sync files deletion
+folders_sync_delete=(
+    Download
+    neo_backuped_data
+)
+
 sync_folder_v1() {
     if [ ! -d $1 ]; then
         mkdir $1
@@ -71,14 +77,15 @@ sync_folder_v1() {
 
 sync_folder() {
     notify "sync... folder $1 to $2"
-    rsync -auh --progress --size-only --exclude=".*" \
+    rsync -auhzP --size-only --exclude=".*" \
+        $3 \
         $1 $2
 }
 
 # backup, excuted on phone
 push_phone_to_remote() {
     cd $termux_map_root
-    sync_folder $1 $remote_root
+    sync_folder $1 $remote_root $2
 }
 
 # restore, excuted on phone
@@ -125,6 +132,13 @@ if ! [[ "${CHOICE}" =~ (Y|y) ]]; then
 fi
 
 for folder in ${folers_to_sync[*]}; do
-    $func $folder 
+    # test whether a string is in an array
+	[[ ${folders_sync_delete[@]/${folder}/} != ${folders_sync_delete[@]} ]] && {
+	    notify "$folder is delete sync"
+        $func $folder --delete
+    } || {
+	    notify "$folder is norm sync"
+        $func $folder
+    }
     echo; echo # for two newlines
 done
