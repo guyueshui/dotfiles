@@ -122,7 +122,7 @@ bindsym $mod+Shift+Right move right
 bindsym ctrl+Mod1+minus move scratchpad
 bindsym Mod1+minus scratchpad show
 # add extra handy pull-down terminal
-bindsym Mod1+p [class="(urxvt|kitty)"] scratchpad show
+bindsym Mod1+p [class="((?i)urxvt|kitty)"] scratchpad show
 
 
 # customize workspace name
@@ -325,7 +325,7 @@ exec --no-startup-id mate-power-manager
 exec --no-startup-id ~/.config/i3/rand_wallpaper.sh &
 
 # Autostart
-exec --no-startup-id picom --backend=xrender &
+exec --no-startup-id picom &
 #exec --no-startup-id volumeicon &
 exec --no-startup-id nm-applet &
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -367,5 +367,5 @@ smart_borders on
 # Title bar size in split mode
 # cf. https://i3wm.org/docs/userguide.html
 #     4.12. Default border style for new windows
-default_border pixel 1
+default_border pixel 2
 focus_follows_mouse no
