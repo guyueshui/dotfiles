@@ -1,0 +1,20 @@
+[Unit]
+Description = frp lan client, at your service
+After = network.target syslog.target
+Wants = network.target
+
+[Service]
+Type = simple
+
+# 启动frps的命令，需修改为您的frps的安装路径
+# WorkingDirectory = %h/bin/frp_0.61.0_linux_amd64
+# or you can set environment
+Environment=WORKDIR=%h/bin/frp_0.61.0_linux_amd64 VAR=haha
+
+ExecSearchPath = %h/bin/frp_0.61.0_linux_amd64
+ExecStart = frpc -c ${WORKDIR}/frpc_visitor.toml
+ExecStartPost=-/usr/bin/echo ${VAR}
+ExecStartPost=-/usr/bin/notify-send ${VAR} "frpc started"
+
+[Install]
+WantedBy = default.target

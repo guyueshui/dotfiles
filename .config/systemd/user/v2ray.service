@@ -1,0 +1,11 @@
+[Unit]
+Description = V2ray client
+After = network.target syslog.target
+
+[Service]
+Type = simple
+WorkingDirectory = %h/.config/v2ray
+ExecStart = v2ray run -c config_client.json
+
+[Install]
+WantedBy = default.target
