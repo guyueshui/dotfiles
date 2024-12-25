@@ -107,6 +107,13 @@ sync_folder() {
         $1 $2
 }
 
+# Find a desktop entry.
+find_desktop_app() {
+    local query="$1"
+    find ~/.local/share/applications -iname "*${query}*"
+    find /usr/share/applications/ -iname "*${query}*"
+}
+
 transfer_0x0() {
     ~/bin/0x0.st.sh $*
 }

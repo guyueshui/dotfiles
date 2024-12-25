@@ -10,6 +10,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
+# now you can use $alt for Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -35,22 +37,15 @@ tiling_drag titlebar
 # start a terminal
 bindsym $mod+Return exec urxvt -sh 25
 
-
 # kill focused window
 bindsym Mod1+F4 kill
 
-
-# My Hotkeys
-bindsym ctrl+Mod1+Return exec emacs
-bindsym ctrl+Mod1+w exec vivaldi-stable
-bindsym ctrl+Mod1+t exec typora
-bindsym ctrl+Mod1+o exec foxitreader  
 
 bindsym ctrl+Mod1+h workspace prev
 bindsym ctrl+Mod1+l workspace next
 #bindsym ctrl+Mod1+Left workspace prev
 #bindsym ctrl+Mod1+Right workspace next
-bindsym $mod+l exec slock
+
 
 #===volumn key===
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
@@ -58,13 +53,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB-
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 
-
 # 背光
 bindsym ctrl+Mod1+Up exec "xbacklight +10"
 bindsym ctrl+Mod1+Down exec "xbacklight -10"
-bindsym ctrl+Mod1+k exec "xbacklight +10"
-bindsym ctrl+Mod1+j exec "xbacklight -10"
-
 
 
 # for controling the MPD
@@ -72,19 +63,6 @@ bindsym ctrl+Mod1+j exec "xbacklight -10"
 #bindsym ctrl+Mod1+p exec mpc toggle
 bindsym ctrl+Mod1+period exec mpc next
 bindsym ctrl+Mod1+comma exec mpc prev
-
-#===programs shortcuts===
-# screen shot
-# bindsym Print exec scrot -q 1 -e 'mv $f ~/Pictures'
-bindsym Print exec gnome-screenshot -i
-bindsym Mod1+Shift+q exec flameshot gui
-# start Explorer
-bindsym $mod+e exec nautilus -w
-# start dmenu (a program launcher)
-bindsym $mod+r exec rofi -show run
-#bindsym $mod+x exec dmenu_run
-bindsym $mod+Tab exec rofi -show 
-
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -142,9 +120,15 @@ assign [class="VirtualBox"] $WS8
 # popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [window_role="(?i)wizard"] floating enable
+for_window [window_role="item-selector"] floating enable
 
 # float programs
 # Use `xprop` to get window info.
+# And search `command_criteria` in i3 user guide for more info.
+#
+#   https://i3wm.org/docs/userguide.html#command_criteria
+#
 for_window [class="imv"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="mpv"] floating enable
@@ -160,6 +144,7 @@ for_window [class="GoldenDict"] floating enable
 for_window [class="qv2ray"] floating enable
 for_window [class="wechat"] floating enable
 for_window [class="QQ"] floating enable
+for_window [instance="ranger"] floating enable
 
 
 # switch to workspace
@@ -210,14 +195,6 @@ bindsym Mod1+Shift+7 move container to workspace $WS7
 bindsym Mod1+Shift+8 move container to workspace $WS8
 
 
-
-#:::::::::::: Desactivar los bordes de ventanas :::::::::::::::#
-################################################################
-#hide_edge_borders true
-################################################################
-
-
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -226,7 +203,40 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
+#: My Hotkeys {{{
+bindsym ctrl+Mod1+Return exec code
+bindsym ctrl+Mod1+k exec kitty
+bindsym ctrl+Mod1+o exec obsidian
+bindsym ctrl+Mod1+r exec "kitty --name ranger -d ~ ranger"
+bindsym $mod+l exec slock
 
+# Screenshot
+# bindsym Print exec scrot -q 1 -e 'mv $f ~/Pictures'
+# bindsym Print exec gnome-screenshot -i
+bindsym Print exec flameshot screen -p ~/Pictures
+bindsym Mod1+Shift+q exec flameshot gui
+# start Explorer
+bindsym $mod+e exec nautilus -w
+# start dmenu (a program launcher)
+bindsym $mod+r exec rofi -show run
+#bindsym $mod+x exec dmenu_run
+bindsym $mod+Tab exec rofi -show 
+#: }}}
+
+
+#: Binding mode {{{
+# create a mode for custom app shortcut
+mode "launcher" {
+    bindsym o exec obsidian; mode "default"
+    bindsym k exec kitty; mode "default"
+    bindsym f exec firefox; mode "default"
+    bindsym r exec "kitty --name ranger -d ~ ranger"; mode "default"
+
+    # return to default mode
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+o mode "launcher"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -237,16 +247,21 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym s resize shrink height 3 px or 3 ppt
+        bindsym Up resize shrink height 3 px or 3 ppt
         bindsym g resize grow height 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
         bindsym x resize shrink width 3 px or 3 ppt
+        bindsym Left resize shrink width 3 px or 3 ppt
         bindsym b resize grow width 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
-        bindsym ctrl+g mode "default"
+        bindsym Escape mode "default"
 }
-
 bindsym $mod+s mode "resize"
+#: }}}
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -329,7 +344,8 @@ exec --no-startup-id picom &
 #exec --no-startup-id volumeicon &
 exec --no-startup-id nm-applet &
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# blue light filter
+# blue light filter or using systemd unit
+# systemctl --user enable redshift-gtk
 exec redshift-gtk &
 
 # status bar
