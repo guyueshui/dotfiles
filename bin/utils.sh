@@ -54,6 +54,53 @@ clean_mem_cache() {
     fi
 }
 
+# Check if a ssh connection can be established.
+check_ssh_connection() {
+    local username=$1
+    local host=$2
+    # This execute a command after a ssh connection established, the command
+    # could be:
+    #   - true or /bin/true or /usr/bin/true
+    #   - exit
+    # Exit with 0 indicates the connection is ok.
+    ssh -q "${username}@${host}" true
+}
+
+# Convert video to gif using ffmpeg.
+# cf. https://askubuntu.com/a/837574
+convert_to_gif() {
+    set -x
+    local input=$1
+    local output="${input%.*}"
+    local options=(
+        -r 30
+# See https://superuser.com/a/556031 for explaination of parameters
+# if you want scale, uncomment the following line.
+#        -vf "fps=15,scale=300:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse"
+        -vf "split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse"
+        -loop 0
+    )
+    case "$2" in
+        --speed)
+            ffmpeg -r 60 -i "$input" -r 40 \
+                -vf "split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+                "${output}.gif"
+            ;;
+        --quality)
+            # NOTE: this option generates high-quality gif with a larger file size.
+            ffmpeg -i "$input" "${options[@]}" "${output}.gif"
+            ;;
+        --scale)
+            ffmpeg -i "$input" -r 15 \
+                -vf "scale=512:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+                "${output}.gif"
+            ;;
+        *)
+            ffmpeg -i "$input" "${output}.gif"
+            ;;
+    esac
+}
+
 sync_folder() {
     notify "sync... $1 to $2"
     rsync -auh --progress --size-only --exclude=".*" \

@@ -27,12 +27,19 @@ msg() {
 backup() {
     mkdir -p /sdcard/backup
     local tarball=termux-backup-$(date +%F).tar.gz
+    # use termux tar for it's newer than system default
+    local tarbin=$PREFIX/bin/tar
+    msg "tarbin is $tarbin"
     msg "start excute backup..."
     su sh -c \
-    tar -caf /sdcard/backup/$tarball \
+    $tarbin -cavf /sdcard/backup/$tarball \
         -C /data/data/com.termux/files \
-	--exclude=.zsh_history \
-	./home ./usr
+	    --exclude-caches \
+	    --exclude=.zsh_history \
+	    --exclude=.cache \
+	    --exclude=usr/var \
+	    --exclude=usr/tmp \
+	    ./home ./usr
     msg "done generate $tarball."
 }
 

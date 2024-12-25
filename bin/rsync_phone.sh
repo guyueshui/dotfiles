@@ -63,6 +63,7 @@ folers_to_sync=(
 
 # folders in this array will sync files deletion
 folders_sync_delete=(
+    Pictures
     Download
     neo_backuped_data
 )
@@ -77,7 +78,9 @@ sync_folder_v1() {
 
 sync_folder() {
     notify "sync... folder $1 to $2"
+    # use ssh -q to suppress barrier of ssh
     rsync -auhzP --size-only --exclude=".*" \
+        -e "ssh -q" \
         $3 \
         $1 $2
 }
@@ -133,7 +136,7 @@ fi
 
 for folder in ${folers_to_sync[*]}; do
     # test whether a string is in an array
-	[[ ${folders_sync_delete[@]/${folder}/} != ${folders_sync_delete[@]} ]] && {
+    printf '%s\0' "${folders_sync_delete[@]}" | grep -qxzF -- "${folder}" && {
 	    notify "$folder is delete sync"
         $func $folder --delete
     } || {

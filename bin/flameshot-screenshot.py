@@ -4,7 +4,7 @@ import subprocess
 import os
 
 env = os.environ.copy()
-# env["QT_QPA_PLATFORM"] = "wayland"
+env["QT_SCALE_FACTOR"] = '1.2'
 
 subprocess.run(
         ["flameshot", "gui"],
