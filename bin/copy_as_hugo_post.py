@@ -49,7 +49,7 @@ def guess_attachment_path(host_file: str, attachment_file: str) -> str:
             ["find", parent_dir, "-name", filename, "-printf", "%p"],
             capture_output=True, text=True
         )
-        if cmd_ret.returncode == 0:
+        if cmd_ret.returncode == 0 and cmd_ret.stdout:
             return os.path.normpath(os.path.abspath(cmd_ret.stdout))
         parent_dir = os.path.dirname(parent_dir)
         retry += 1
@@ -137,10 +137,10 @@ echo done
 
 
 if __name__ == "__main__":
-    # arg1 = "/home/yychi/Documents/learn2live/work/mbs/CustomProp检查IntKey.md"
-    # arg2 = "/home/yychi/Documents/BlogHugo//content/post/"
-    # copy_as_hugo_post(arg1, arg2)
-    # exit(0)
+    arg1 = "/home/yychi/Documents/learn2live/__zettel/202501082036suckless-windows.md"
+    arg2 = "/home/yychi/Documents/BlogHugo//content/post/"
+    copy_as_hugo_post(arg1, arg2)
+    exit(0)
     if len(sys.argv) == 3:
         notify("args: ", *sys.argv)
         copy_as_hugo_post(sys.argv[1], sys.argv[2])

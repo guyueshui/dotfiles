@@ -34,16 +34,6 @@ notify() {
     echo "--- $*"
 }
 
-if [ -n "$MY_REMOTE_DEV" ] && [ "$MY_REMOTE_DEV"=="mibook" ]; then
-	# Use MiBook
-	local_storage="/home/yychi/EXTRA/Android/munch/device_sdcard/"
-	remote_root="mi-book:$local_storage"
-else
-	# Use dell-inspiron
-	local_storage="/srv/alist/Android/munch/"
-	remote_root="dell-inspiron-frp:$local_storage"
-fi
-
 termux_map_root=~/storage/shared
 folers_to_sync=(
     Pictures
@@ -80,7 +70,7 @@ sync_folder() {
     notify "sync... folder $1 to $2"
     # use ssh -q to suppress barrier of ssh
     rsync -auhzP --size-only --exclude=".*" \
-        -e "ssh -q" \
+	-e "ssh -q" \
         $3 \
         $1 $2
 }
@@ -97,12 +87,6 @@ pull_remote_to_phone() {
     sync_folder $remote_root$1 .
 }
 
-# backup, excuted on computer
-pull_phone_to_local() {
-    cd $local_storage
-    rsync -auh --progress --size-only --exclude=".*" \
-        munch:storage/shared/$1/ $local_storage
-}
 
 
 func=
@@ -126,6 +110,23 @@ case "$1" in
         ;;
 esac
 
+case "$2" in
+    --to-mibook)
+	    local_storage="/home/yychi/EXTRA/Android/munch/device_sdcard/"
+	    remote_root="mi-book:$local_storage"
+        ;;
+    --to-dell-lan)
+	    local_storage="/media/sdc2/android_device/Android/munch/"
+	    remote_root="dell-inspiron-lan:$local_storage"
+        segate=1
+        ;;
+    *)
+	    local_storage="/srv/alist/Android/munch/"
+	    remote_root="dell-inspiron-frp:$local_storage"
+        ;;
+esac
+
+
 echo "Backup to $remote_root"
 # confirm excute
 read -re -p "Ready to excute? (y/n) " CHOICE
@@ -136,12 +137,15 @@ fi
 
 for folder in ${folers_to_sync[*]}; do
     # test whether a string is in an array
-    printf '%s\0' "${folders_sync_delete[@]}" | grep -qxzF -- "${folder}" && {
+    if printf '%s\0' "${folders_sync_delete[@]}" | grep -qxzF -- "${folder}" && \
+        ((segate != 1))
+    then
 	    notify "$folder is delete sync"
         $func $folder --delete
-    } || {
+	else
+    
 	    notify "$folder is norm sync"
         $func $folder
-    }
+    fi
     echo; echo # for two newlines
 done
