@@ -1,15 +1,14 @@
 # env: python3
 # encoding: utf-8
 
-from ssh_connection import SSHConnection
-from remote_node import RemoteNode
+from common import *
 import subprocess
 
 
 def deploy_package():
     # init ssh connection
     conn = SSHConnection()
-    conn.re_init(RemoteNode)
+    conn.re_init(N.RemoteNode)
 
     # code_root = os.path.expanduser("~/code/project")
     # print(code_root)
