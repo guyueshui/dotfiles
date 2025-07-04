@@ -25,5 +25,14 @@ def deploy_package():
     conn.close()
 
 
+def run_on_dellinspiron():
+    conn = SSHConnection(*N.DellInspiron.get_para())
+    chain = conn.get_cmd_chain().execute("sudo -i").write_input(conn.password)
+    chain.execute("ls -al")\
+        .execute("whoami && id")\
+        .execute("cat /etc/hostname")
+    chain.execute("exit 23").execute("exit 34").over()
+
+
 if __name__ == "__main__":
-    deploy_package()
+    run_on_dellinspiron()

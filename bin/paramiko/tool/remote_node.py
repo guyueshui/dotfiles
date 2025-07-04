@@ -11,6 +11,10 @@ class RemoteNode(object):
     PASSWORD = "ok"
 
     @classmethod
+    def get_desc(cls):
+        return f"{cls.__name__}({cls.HOST})"
+
+    @classmethod
     def get_para(cls):
         return (cls.HOST, cls.PASSWORD, cls.USERNAME, cls.PORT)
 
@@ -23,3 +27,13 @@ class RemoteNode(object):
 class SomeRemoteMachine(RemoteNode):
     HOST = "1.2.3.4"
     SOME_HOST_SPECIFIC_VAR = "bahlabahla"
+
+class TencentCloudNode(RemoteNode):
+    HOST = "1.2.3.4"
+    USERNAME = "root"
+
+class DellInspiron(RemoteNode):
+    HOST = "1.2.3.4"
+    PORT = 12345
+    USERNAME = "yychi"
+    PASSWORD = "bahlabahla"
