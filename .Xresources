@@ -4,7 +4,14 @@
 *                              General                               *
 **********************************************************************/
 
-xft.dpi: 96
+/**
+ * You should really use the capitalized letter "X" for
+ *     Xft.dpi
+ * not xft.dpi
+ */
+
+! 96*1.5=144
+Xft.dpi: 144
 !xft.antialias: true
 xft.hinting: true
 xft.rgba: rgb
@@ -12,7 +19,7 @@ xft.autohint: false
 xft.hintstyle: hintfull
 xft.lcdfilter: lcddefault
 xft:WenQuanYi Micro Hei:style=Regular:size=12, \
-xft:Font Awesome 5 Free:style=Regular:antialias=false:size=12, \
+xft:FontAwesome:style=Regular:antialias=false:size=12, \
 
 !! Load pre-defined colors
 ##include "/home/yychi/space-vim-dark.xresources"
@@ -90,6 +97,14 @@ URxvt.italicFont:xft:Source Code Pro for Powerline:style=Italic:antialias=True:p
 /**********************************************************************
 *                                rofi                                *
 **********************************************************************/
+
+/**
+ * NOTE: By now (2025-03-05), rofi use 
+ *
+ *     .config/rofi/config.rasi
+ *
+ * as its configuration, below is deprecated.
+ */
 
 !rofi.modi: run
 rofi.font: Monaco 15

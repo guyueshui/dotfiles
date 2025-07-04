@@ -146,7 +146,7 @@
     ### Text ###
 
     # font = Consolas 12#, HYWenRunSongYun U 12, WenQuanYi Zen Hei
-    font = SF Pro Display 12
+    font = SF Pro Display 14
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.

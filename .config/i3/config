@@ -54,8 +54,8 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 
 # 背光
-bindsym ctrl+Mod1+Up exec "xbacklight +10"
-bindsym ctrl+Mod1+Down exec "xbacklight -10"
+bindsym ctrl+Mod1+Up   exec "brightnessctl set +5%"
+bindsym ctrl+Mod1+Down exec "brightnessctl set 5%-"
 
 
 # for controling the MPD
@@ -322,7 +322,7 @@ for_window [all] title_window_icon padding 3px
 
 # --------------------autostart tasks--------------------------
 #### input method ####
-exec fcitx5
+exec --no-startup-id fcitx5
 #exec sogou-qimpanel
 #exec sogou-qimpanel-watchdog
 ######################
@@ -342,11 +342,15 @@ exec --no-startup-id ~/.config/i3/rand_wallpaper.sh &
 # Autostart
 exec --no-startup-id picom &
 #exec --no-startup-id volumeicon &
-exec --no-startup-id nm-applet &
+
+# Update by yychi@2025-03-05, this adjust sys-tray icon size
+# see: https://forum.xfce.org/viewtopic.php?pid=75289#p75289
+exec --no-startup-id nm-applet --indicator &
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # blue light filter or using systemd unit
 # systemctl --user enable redshift-gtk
-exec redshift-gtk &
+exec --no-startup-id redshift-gtk &
 
 # status bar
 #bar {
