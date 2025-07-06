@@ -11,6 +11,7 @@
 !**/*conf*/**/*.json
 !.config/**/*rc
 !.config/**/*conf*
+!.config/kitty
 !bin
 #---[ ignore list ]---
 .config/shadowsocks
