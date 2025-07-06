@@ -9,11 +9,11 @@
 		"y": 24,
 		"width": 1872,
 		"height": 1011,
-		"maximized": false,
+		"maximized": true,
 		"NthCategory": 0,
 		"NthStatus": 1,
 		"PanedPositionH": 192,
-		"PanedPositionV": 901
+		"PanedPositionV": 869
 	},
 	"Summary": {
 		"name": true,
@@ -41,7 +41,7 @@
 		"SortNth": 1,
 		"Width": {
 			"state": 18,
-			"name": 903,
+			"name": 911,
 			"complete": 70,
 			"total": 70,
 			"percent": 83,
@@ -105,7 +105,7 @@
 	"PluginMedia": {
 		"match_mode": 3,
 		"quality": 3,
-		"type": 0
+		"type": 1
 	},
 	"Completion": {
 		"remember": true,

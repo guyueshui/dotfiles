@@ -130,4 +130,5 @@
     "git.openRepositoryInParentFolders": "never",
     "autocorrect.formatOnSave": false,
     "window.titleBarStyle": "custom", // temporary fix file menu crash, see: https://github.com/microsoft/vscode/issues/232723#issuecomment-2449529795
+    "explorer.confirmDragAndDrop": false,
 }
