@@ -1,10 +1,12 @@
 # encoding: utf-8
-author = "bingbing.hu"
 
 from tool.utils import notify
 from threading import Thread
 import os
+import re
+import sys
 import time
+import select
 import paramiko
 import paramiko.util
 paramiko.util.log_to_file("paramiko.log")
@@ -74,43 +76,6 @@ class SSHConnection(object):
         stdin.flush()
         return self.__handle_cmd_output(stdout, stderr, cmd)
 
-    def __excute_successive_cmds(self, cmd):
-        client = self.get_client()
-        chan = client.invoke_shell()
-        chan.set_combine_stderr(True)
-        stdin = chan.makefile_stdin("wb", -1)
-        stdout = chan.makefile("r", -1)
-        # chan.send("sudo -i\n")
-        # chan.sendall(self.password + "\n")
-        # time.sleep(.5)
-        # stdin.flush()
-        stdin.write("ls -al\n")
-        stdin.write(f"""
-sudo -i
-{self.password}
-""")
-        time.sleep(0.5)
-#         chan.send("""
-# pwd
-# echo $HOME
-# echo $USER
-# """.encode())
-        # chan.sendall("pwdx 15391\n".encode())
-        chan.send("exit\n".encode())
-        chan.send("./a.out\n".encode())
-        chan.send("exit\n".encode())
-        while True:
-            if chan.recv_ready():
-                print(chan.recv(1024).decode())
-                continue
-            if chan.exit_status_ready():
-                exit_status = chan.recv_exit_status()
-                break
-            if chan.closed or chan.eof_received or not chan.active:
-                break
-            time.sleep(0.5)
-        print("exit_status:", exit_status)
-
     @staticmethod
     def __handle_cmd_output(stdout: paramiko.ChannelFile, stderr: paramiko.ChannelFile, cmd: str) -> int:
         for line in stdout:
@@ -170,44 +135,35 @@ sudo -i
 
 
 class CommandChain(object):
+    PROMPT = re.compile(r'[$#]\s*$')
+
     def __init__(self, ssh_client: paramiko.SSHClient, timeout=0):
         assert ssh_client is not None
         self._client = ssh_client
-        self._chan = ssh_client.invoke_shell(self.__class__.__name__) # type: paramiko.Channel
+        self._chan = ssh_client.invoke_shell() # type: paramiko.Channel
         time.sleep(1) # wait the channel to be ready
         # self._chan.setblocking(0)
         # self._chan.set_combine_stderr(True)
         self._stdin = self._chan.makefile_stdin("wb", -1)
         self._exit_status = 0
         self._timeout = timeout
-
-        self._trd = Thread(target=self._retrieve_output)
-        self._trd.start()
-
-    def _retrieve_output(self):
-        output = b""
-        while not self._chan.exit_status_ready():
-            if self._chan.recv_ready():
-                bmsg = self._chan.recv(4096)
-                output += bmsg
-            if self._chan.recv_stderr_ready():
-                output += self._chan.recv_stderr(4096)
-            if output.count(b'\n') > 0:
-                print(output.decode(), end="")
-                output = b""
-        st = self._chan.recv_exit_status()
-        notify("exit with", st)
-        return st
+        self._closed = False
+        self._output_trd = Thread(target=self.__retrieve_output)
+        self._input_trd = Thread(target=self.__input_loop)
+        self._output_trd.start()
+        self._input_trd.start()
 
     def over(self):
         time.sleep(0.5) # essential, otherwise the command will be blocked
         # while not self._chan.exit_status_ready():
         #     self.execute("exit")
         # self.__handle_output()
+        self._output_trd.join()
         self._stdin.close()
         self._chan.close()
         self._client = None
-        self._trd.join()
+        self._closed = True
+        self._input_trd.join()
 
     def execute(self, one_line_cmd: str):
         one_line_cmd = one_line_cmd.rstrip('\n') + '\n'
@@ -219,8 +175,43 @@ class CommandChain(object):
         text = text.rstrip('\n') + '\n'
         self._stdin.write(text.encode())
         self._stdin.flush()
-        time.sleep(0.5) # essential for the command to execute
+        time.sleep(0.5)
         return self
+
+    def __retrieve_output(self):
+        output = b""
+        while not self._chan.exit_status_ready():
+            if self._chan.recv_ready():
+                bmsg = self._chan.recv(4096)
+                output += bmsg
+            if self._chan.recv_stderr_ready():
+                output += self._chan.recv_stderr(4096)
+            if output.count(b'\n') > 0:
+                print(output.decode(), end="")
+                output = b""
+        st = self._chan.recv_exit_status()
+        print("exit with", st)
+
+    def __input_loop(self):
+        notify("enter %s REPL..." % self.__class__.__name__)
+        while not self._closed:
+            try:
+                rlist,_,_ = select.select([sys.stdin], [], [], 0.1)
+                if rlist:
+                    user_input = sys.stdin.readline()
+                    if not user_input:
+                        notify("EOF receieved")
+                        self.execute("exit")
+                    else:
+                        self.execute(user_input)
+            except KeyboardInterrupt:
+                notify("exit %s REPL..." % self.__class__.__name__)
+                return
+            except Exception as e:
+                notify("unknow exception occured", str(e))
+                import traceback
+                traceback.print_exc()
+                return
 
     def __handle_output(self):
         chan = self._chan
