@@ -7,6 +7,7 @@ import re
 import sys
 import time
 import select
+import asyncio
 import paramiko
 import paramiko.util
 paramiko.util.log_to_file("paramiko.log")
@@ -41,6 +42,7 @@ class SSHConnection(object):
             self._sftp_client.close()
         self._client = None
         self._sftp_client = None
+        print("%s.close" % self.__class__.__name__)
 
     def re_init(self, node_cls):
         """ Re-init the node with a NodeConf class. """
@@ -70,6 +72,27 @@ class SSHConnection(object):
         stdin, stdout, stderr = self.get_client().exec_command(cmd)
         return self.__handle_cmd_output(stdout, stderr, cmd)
 
+    async def aexecute(self, cmd, output=False, ignore_fail=False):
+        loop = asyncio.get_event_loop()
+        stdin, stdout, stderr = await loop.run_in_executor(
+            None, self.get_client().exec_command, cmd
+        )
+        exit_code, out, err = await asyncio.gather(
+            loop.run_in_executor(None, stdout.channel.recv_exit_status),
+            loop.run_in_executor(None, stdout.read().decode),
+            loop.run_in_executor(None, stderr.read().decode),
+        )
+        return exit_code, out, err
+
+    def excute_silent(self, cmd):
+        stdin, stdout, stderr = self.get_client().exec_command(cmd)
+        status = stdout.channel.recv_exit_status()
+        if status != 0:
+            raise CommandRunException(
+                "Excute '%s' failed with status %d.\n\n%s"
+                % (cmd, status, stderr.read().decode()))
+        return status
+
     def excute_with_sudo(self, cmd):
         stdin, stdout, stderr = self.get_client().exec_command("sudo -S %s" % cmd)
         stdin.write(self.password + "\n")
@@ -90,14 +113,14 @@ class SSHConnection(object):
     def get_cmd_chain(self, timeout=0):
         return CommandChain(self.get_client(), timeout)
 
-    def get_cmd_context(self):
-        return CommandContext(self.get_client())
+    def get_achain(self):
+        return AsyncCommandChain(self.get_client())
 
     def upload(self, local_path, remote_path):
         if not os.path.exists(local_path):
             raise FileNotFoundError("Local file %s not found." % local_path)
         if remote_path[-1] == '/': # treat remote_path as a directory
-            self.__ensure_remote_path(remote_path)
+            self._ensure_remote_path(remote_path)
             filename = os.path.basename(local_path)
             remote_path += filename
         notify("Uploading %s to %s" % (local_path, remote_path))
@@ -126,7 +149,7 @@ class SSHConnection(object):
         cb = lambda x, y: print(f"\rDownloaded {x}/{y}", end="", flush=True)
         sftp.get(remote_path, local_file, callback=cb)
 
-    def __ensure_remote_path(self, remote_path):
+    def _ensure_remote_path(self, remote_path):
         self.excute(f"""
             if [ ! -d {remote_path} ]; then
                 mkdir -p {remote_path}
@@ -153,6 +176,15 @@ class CommandChain(object):
         self._output_trd.start()
         self._input_trd.start()
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        exc_type and print("type: %s" % exc_type)
+        exc_val and print("val: %s" % exc_val)
+        exc_tb and print("tb: %s" % exc_tb)
+        self.execute(f"exit {self._exit_status}").over()
+
     def over(self):
         time.sleep(0.5) # essential, otherwise the command will be blocked
         # while not self._chan.exit_status_ready():
@@ -164,6 +196,7 @@ class CommandChain(object):
         self._client = None
         self._closed = True
         self._input_trd.join()
+        print("%s.over" % self.__class__.__name__)
 
     def execute(self, one_line_cmd: str):
         one_line_cmd = one_line_cmd.rstrip('\n') + '\n'
@@ -189,7 +222,7 @@ class CommandChain(object):
             if output.count(b'\n') > 0:
                 print(output.decode(), end="")
                 output = b""
-        st = self._chan.recv_exit_status()
+        st = self._exit_status = self._chan.recv_exit_status()
         print("exit with", st)
 
     def __input_loop(self):
@@ -228,64 +261,100 @@ class CommandChain(object):
             notify("no data in %ss, channel will be closed!" % self._timeout)
 
 
-import selectors as sl
+class AsyncCommandChain(object):
+    def __init__(self, ssh_client: paramiko.SSHClient, timeout=0):
+        assert ssh_client is not None
+        self._client = ssh_client
+        self._chan = ssh_client.invoke_shell() # type: paramiko.Channel
+        time.sleep(1) # wait the channel to be ready
+        # self._stdin = self._chan.makefile_stdin("wb", -1)
+        self._exit_status = 0
+        self._tasks = []
+        self._consumer_cancel_evt = asyncio.Event()
 
-class CommandContext(object):
-    SELECTOR = sl.DefaultSelector()
-    def __init__(self, ssh_client: paramiko.SSHClient):
-        self._cmdq = []
-        self._output = b""
-        self._ssh = ssh_client
-        self._chan = ssh_client.invoke_shell(self.__class__.__name__) # type: paramiko.Channel
-        # self._chan.setblocking(0)
-        # self._chan.set_combine_stderr(True)
-        self._stdin = self._chan.makefile_stdin("wb", -1)
-        self._stdout = self._chan.makefile("rb", -1)
-        self._stderr = self._chan.makefile_stderr('rb', -1)
+        self.loop = asyncio.get_event_loop()
+        self.cmdq = asyncio.Queue(1024)
 
-        self.__class__.SELECTOR.register(self._chan, sl.EVENT_READ | sl.EVENT_WRITE)
+    async def append_cmd(self, cmd: str):
+        if self._consumer_cancel_evt.is_set():
+            return
+        cmd = cmd.rstrip('\n') + '\n'
+        # await self.cmdq.put(cmd)
+        self._chan.send(cmd.encode())
+        await asyncio.sleep(0.5)
 
-    def execute(self, cmd):
-        self._cmdq.append(cmd)
-        return self
+    async def _consume_cmd(self, event: asyncio.Event):
+        while not event.is_set():
+            cmd = await self.cmdq.get()
+            notify("send cmd", cmd)
+            self._chan.send(cmd)
+            await asyncio.sleep(0.5)
+        notify(f"{self.__class__.__name__}.{self._consume_cmd.__name__} exit")
 
-    def process_events(self, mask):
-        if mask & sl.EVENT_READ:
-            try:
-                if self._chan.recv_stderr_ready():
-                    data = self._stderr.read(1024)
-                else:
-                    data = self._stdout.read(1024)
-                if data:
-                    print(data.decode(), end="")
-                    self._output += data
-                else:
-                    notify("close channel")
-                    self.SELECTOR.unregister(self._chan)
-                    self._chan.close()
-                    return 0
-            except Exception as e:
-                notify("%s read error: %s" % (self.__class__.__name__, str(e)))
-
-        if mask & sl.EVENT_WRITE and self._cmdq:
-            try:
-                cmd = self._cmdq.pop(0)
-                cmd = cmd.rstrip('\n') + '\n'
-                self._chan.send(cmd)
-            except Exception as e:
-                notify("%s write error: %s" % (self.__class__.__name__, str(e)))
-
-        return 1
-
-    def over(self):
+    async def retrieve_output(self):
+        output = b""
         while True:
-            events = self.SELECTOR.select(1)
-            for key, mask in events:
-                notify(key, mask)
-                flag = self.process_events(mask)
-                if flag == 0:
-                    break
-        return flag
+            bmsg = await self.loop.run_in_executor(None, self._chan.recv, 4096)
+            notify("get output")
+            output += bmsg
+            output += await self.loop.run_in_executor(None, self._chan.recv_stderr, 4096)
+            notify("get err")
+            if output.count(b'\n') > 0:
+                print(output.decode(), end="")
+                output = b""
+        # st = self._exit_status = self._chan.recv_exit_status()
+
+    async def retrieve_outputv2(self):
+        output = b""
+        while not self._chan.exit_status_ready():
+            if self._chan.recv_ready():
+                bmsg = self._chan.recv(4096)
+                # notify("get output")
+                output += bmsg
+            if self._chan.recv_stderr_ready():
+                output += self._chan.recv_stderr(4096)
+                notify("get err")
+            if output.count(b'\n') > 0:
+                print(output.decode(), end="")
+                output = b""
+            await asyncio.sleep(0.1)
+        st = self._exit_status = self._chan.recv_exit_status()
+        notify("exit with", st)
+        self._consumer_cancel_evt.set()
+        notify(f"{self.__class__.__name__}.{self.retrieve_outputv2.__name__} exit")
+
+    async def start(self, *tasks):
+        self._tasks = [
+            # asyncio.create_task(self._consume_cmd(self._consumer_cancel_evt)),
+            asyncio.create_task(self.retrieve_outputv2()),
+            # asyncio.create_task(self.exit())
+        ]
+        self._tasks.extend(tasks)
+        await asyncio.gather(*self._tasks) # is equivalent to
+        # await asyncio.create_task(self.retrieve_outputv2())
+        # for t in tasks:
+        #     await t
+
+    async def exit(self):
+        count = 0
+        while not self._consumer_cancel_evt.is_set():
+            await self.append_cmd("exit")
+            count += 1
+            notify("sent exit cmd, count=%s, pending cmds=%s" % (count, self.cmdq.qsize()))
+            await asyncio.sleep(count)
+        return self._exit_status
+
+    async def foo(self, cmd: str):
+        loop = asyncio.get_event_loop()
+        stdin, stdout, stderr = await loop.run_in_executor(
+            None, self._client.exec_command, cmd
+        )
+        exit_code, output, err = await asyncio.gather(
+            loop.run_in_executor(None, stdout.channel.recv_exit_status),
+            loop.run_in_executor(None, stdout.read),
+            loop.run_in_executor(None, stderr.read),
+        )
+        return exit_code, output.decode(), err.decode()
 
 
 def test_connection():
