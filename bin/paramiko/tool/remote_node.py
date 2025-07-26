@@ -4,6 +4,15 @@
 Here stores your remote machines's information.
 """
 
+from typing import TypeVar, Type
+
+
+class DeployStruct(object):
+    def __init__(self, deploy_dir, deploy_name="feeder_handler"):
+        self.deploy_dir = deploy_dir
+        self.deploy_name = deploy_name
+
+
 class RemoteNode(object):
     HOST = ""
     PORT = 22
@@ -22,6 +31,10 @@ class RemoteNode(object):
     def get_para_dict(cls):
         return {"host": cls.HOST, "password": cls.PASSWORD,
                 "username": cls.USERNAME, "port": cls.PORT }
+
+
+RemoteNodeT = TypeVar("RemoteNodeT", bound=RemoteNode)
+Node = Type[RemoteNode]
 
 
 class SomeRemoteMachine(RemoteNode):

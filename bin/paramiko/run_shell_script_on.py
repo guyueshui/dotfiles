@@ -3,6 +3,8 @@ from datetime import date
 import asyncio
 import time
 
+# Run local script or script content on remote machine over ssh channel.
+
 CHECK_SEQ = """
 awk -F, '
 BEGIN {
@@ -12,7 +14,7 @@ BEGIN {
 {
     if (NR == 1) next;
 
-    if (prev_val ~ /^-?[0-9]+(\.[0-9]+)?$/) {
+    if (prev_val ~ /^-?[0-9]+(\\.[0-9]+)?$/) {
         cur_val = $(NF) + 0
         if (cur_val != prev_val + 1) {
             print "Line " NR " not continuous, prev:" prev_val ", cur:" cur_val
@@ -107,7 +109,24 @@ async def run_shell_script(file: str, node: N.Node, *task):
     conn.close()
 
 
+async def test_achain():
+    conn = SSHConnection(*N.DellInspiron.get_para())
+    a = conn.get_achain()
+    async def task():
+        await a.append_cmd("""
+systemctl status wyc-ssh
+q
+systemctl status frpc
+q
+""")
+        # await a.exit()
+
+    await a.start(task())
+    conn.close()
+
+
 
 if __name__ == "__main__":
     # asyncio.run(run_shell_content(N.Prd24038))
-    asyncio.run(run_shell_script("check_redis_latency.sh", N.Ansible02, check_redis_latency))
+    # asyncio.run(run_shell_script("check_redis_latency.sh", N.DellInspiron, check_redis_latency))
+    asyncio.run(test_achain(), debug=True)

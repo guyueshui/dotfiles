@@ -18,7 +18,7 @@ class CommandRunException(Exception):
 
 
 class SSHConnection(object):
-    def __init__(self, host="", password="", username="bingbing.hu", port=22) -> None:
+    def __init__(self, host="", password="", username="yychi", port=22) -> None:
         self.host = host
         self.password = password
         self.username = username
