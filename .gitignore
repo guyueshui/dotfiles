@@ -33,6 +33,7 @@
 .config/viewnior
 .config/lxqt
 .config/htop
+.config/[Kk]ingsoft
 .config/vlc/vlc-qt-interface.conf
 .muttrc
 .msmtprc
