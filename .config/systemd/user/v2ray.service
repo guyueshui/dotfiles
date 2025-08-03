@@ -6,6 +6,10 @@ After = network.target syslog.target
 Type = simple
 WorkingDirectory = %h/.config/v2ray
 ExecStart = v2ray run -c config_client.json
+# This silent most info logs of v2ray to journal.
+# see: https://askubuntu.com/a/1203327
+LogLevelMax = 3
+StandardOutput = null
 
 [Install]
 WantedBy = default.target

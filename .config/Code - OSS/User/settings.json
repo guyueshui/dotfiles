@@ -119,10 +119,7 @@
     ],
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.recipe.default": "lastUsed",
-    "clangd.path": "/home/yychi/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
-    "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.codeLens.enabled": false,
+    "clangd.path": "/home/yychi/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/20.1.8/clangd_20.1.8/bin/clangd",
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.inlayHints.enabled": "on",
     "diffEditor.ignoreTrimWhitespace": false,
@@ -131,4 +128,22 @@
     "autocorrect.formatOnSave": false,
     "window.titleBarStyle": "custom", // temporary fix file menu crash, see: https://github.com/microsoft/vscode/issues/232723#issuecomment-2449529795
     "explorer.confirmDragAndDrop": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.views.commits.avatars": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.views.repositories.avatars": false,
+    "gitlens.views.fileHistory.avatars": false,
+    "gitlens.blame.highlight.locations": [
+        "gutter",
+        "line",
+        "overview"
+    ],
+    "gitlens.changes.locations": [
+        "gutter",
+        "overview"
+    ],
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.hovers.avatars": false,
+    "gitlens.hovers.currentLine.changes": false,
 }
