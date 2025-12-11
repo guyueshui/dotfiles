@@ -36,8 +36,8 @@ def get_lunar_now():
     dz = di_zhi[(year - 4) % 12]
     sx = sheng_xiao[(year - 4) % 12]
     return f"""\
-{year}年 {tg}{dz}{sx}年
-{'闰' if lunar.isleap else ''}{lunar_months[lunar.month - 1]} \
+{tg}{dz} {sx}年 \
+{'闰' if lunar.isleap else ''}{lunar_months[lunar.month - 1]}\
 {lunar_days[lunar.day - 1]}"""
 
 

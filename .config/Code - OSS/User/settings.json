@@ -25,7 +25,7 @@
     // "editor.cursorSmoothCaretAnimation": true,
     // "editor.smoothScrolling": true,
     // "workbench.list.smoothScrolling": true,
-    // "workbench.editor.wrapTabs": true,
+    "workbench.editor.wrapTabs": true,
     "workbench.sideBar.location": "right",
     "window.zoomLevel": 1,
     "explorer.confirmDelete": false,
@@ -146,4 +146,8 @@
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.hovers.avatars": false,
     "gitlens.hovers.currentLine.changes": false,
+    "gitlens.hovers.currentLine.enabled": false,
+    "gitlens.hovers.pullRequests.enabled": false,
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.hideUnchangedRegions.enabled": true,
 }
