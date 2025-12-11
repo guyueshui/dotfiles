@@ -1,0 +1,262 @@
+//// Catppuccin mocha
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
+$red: #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$text: #b6a49b;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+
+
+* {
+  all: unset;
+}
+
+window {
+  font-family: SF Pro Display, FZFW ZhuZi MinchoS,
+    FontAwesome, "Font Awesome 7 Free", "Font Awesome 7 Solid",
+    sans-serif;
+  //background-color: $base;
+  //background: rgba(255, 255, 255, 0.25);
+  //border: 1px solid rgba(255, 255, 255, 0.35);
+  //border-radius: 16px;
+  //box-shadow:
+  //      0 4px 30px rgba(0, 0, 0, 0.1),
+  //      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  background: rgba(52, 51, 50, 0.8745);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  //box-shadow:
+  //      0 4px 30px rgba(0, 0, 0, 0.1),
+  //      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.bar {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+
+.icon {
+  margin: 0 5px;
+  color: $text;
+}
+
+.icon.single-icon {
+  margin: 0;
+}
+
+.mic {
+  .icon.running {
+    color: $green;
+  }
+}
+
+.workspaces {
+  margin: 2px;
+  padding: 0px;
+  font-size: 10px;
+
+  .name {
+    min-width: 40px;
+  }
+
+  .workspace.focused {
+    border-bottom: 2px solid #fba922;
+    margin-bottom: -2px;
+    color: unset;
+  }
+  .workspace {
+    padding: 1px 4px;
+    color: $text;
+  }
+
+  .workspace.empty {
+    padding: 9px 9px;
+  }
+
+  .workspace.active {
+    background-color: $surface2;
+  }
+}
+
+
+.bluetooth,
+.cpu, .memory,
+.mpd,
+.battery,
+.tray,
+.speakers,
+.backlight,
+.mic,
+.player .wifi {
+  color: $text;
+  font-size: 12px;
+}
+
+.battery,
+.time,
+.date {
+  font-size: 10px;
+}
+
+.mpd {
+  font-family: FZFW ZhuZi MinchoS;
+}
+
+.netspeed {
+  color: $text;
+  font-size: 10px;
+}
+
+.player {
+  .icon.play {
+    color: $green;
+  }
+
+  .icon.pause {
+    color: $red;
+  }
+}
+
+
+.battery {
+  label.icon1 {
+    margin-right: 2px;
+  }
+
+  label.icon2 {
+    margin-left: 0;
+  }
+
+  .icon1.charging {
+    color: $green;
+  }
+
+  .icon1.discharging {
+    color: $peach;
+  }
+
+  .icon.level_0,
+  .icon.level_1 {
+    color: $red;
+  }
+
+  .icon.level_2 {
+    color: $peach;
+  }
+
+  .icon.level_3 {
+    color: $yellow;
+  }
+
+  .icon.level_4,
+  .icon.level_5,
+  .icon.level_6,
+  .icon.level_7,
+  .icon.level_8 {
+    color: $green;
+  }
+
+  .icon.level_9,
+  .icon.level_10 {
+    color: $mauve;
+  }
+}
+
+.text {
+  font-size: 10px;
+}
+
+.tooltip {
+  //font-family: WenQuanYi Mirco Hei Mono;
+  font-family: FZFW ZhuZi MinchoS;
+  background-color: #f9f9f9;
+  color: black;
+  font-size: 12px;
+  border-radius: 6px;
+  padding: 5px 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.bluetooth {
+  .icon.connected {
+    color: $green;
+  }
+}
+
+.camera {
+  .icon.connected {
+    color: $green;
+  }
+}
+
+.icon.muted {
+  color: $red;
+}
+
+.wifi {
+  .icon.connected {
+    color: $green;
+  }
+}
+
+.tray image {
+  -gtk-icon-transform: scale(0.75);
+}
+
+.date,
+.time {
+  .text {
+    color: $text;
+  }
+  .shichen {
+    font-size: xx-small;
+    font-weight: bold;
+    padding: 1px 2px;
+    margin: 6px;
+    border-radius: 3px;
+    color: #003366;
+    background-color: #f0f8ff;
+  }
+}
+
+scale trough {
+  background-color: $surface1;
+  border-radius: 2px;
+  min-height: 5px;
+  min-width: 50px;
+}
+
+scale trough highlight {
+  background-color: $green;
+  border-radius: 2px;
+}
+
+scale.over trough highlight {
+  background-color: $peach;
+  border-radius: 2px;
+}
