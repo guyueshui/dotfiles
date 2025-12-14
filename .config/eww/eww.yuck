@@ -50,19 +50,23 @@
          :space-evenly false
          :spacing 10
       (workspaces :monitor monitor)
+      (sep)
       (mpd))
-    ;(box :class "center"
-    ;     :halign "center"
-    ;     :spacing 15
-    ;  (mpd))
-    (box :class "right"
-         :halign "end"
-         :spacing 15
-         :space-evenly false
-      (netspeed)
+    (box :class "center"
+         :halign "center"
+         :spacing 10
       (CPU)
       (memory)
+      ;(mpd)
+            )
+    (box :class "right"
+         :halign "end"
+         :spacing 10
+         :space-evenly false
+      (netspeed)
+      (sep)
       (tray)
+      (sep)
       ;(bluetooth)
       ;(wifi)
       ;(camera)
@@ -70,10 +74,14 @@
       (mic)
       (speakers)
       (backlight)
-      (battery)
+      (battery :bat_idx "BAT1")
       (time_revealer)
       ; (date)
             )))
+
+(defwidget sep []
+  (box :class "module-2" :vexpand "false" :hexpand "false"
+    (label :class "separ" :text "|")))
 
 ; ━━━━ toggle-scaling ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -126,8 +134,7 @@
 ; ━━━━ tray ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 (defwidget tray []
-  (box :class "tray"
-    (systray)))
+  (box :class "tray" (systray)))
 
 ; ━━━━ camera ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
@@ -159,10 +166,9 @@
 (defwidget wifi []
   (tooltip
     (label :class "tooltip" :text "${wifi == 0 ? 'Disconnected' : wifi}")
-    (box :class "wifi"
-      :space-evenly false
-      (label 
-        :class "icon ${wifi == 0 ? 'disconnected' : 'connected'} " 
+    (box :class "wifi" :space-evenly false
+      (label
+        :class "icon ${wifi == 0 ? 'disconnected' : 'connected'} "
         :text "${wifi == 0 ? '󰖪' : '󱚽' }"))))
 
 
@@ -174,27 +180,29 @@
   (box :class "mic"
     :space-evenly false
     (eventbox :cursor "pointer"
-      (button :class "mute-toggle"
-              :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-        (label :class "icon single-icon ${mic == 2 ? 'running' : mic == 0 ? 'muted' : ''}"
-               :text "${mic == 0 ? '' :  '' }")))))
+      (button
+        :class "mute-toggle"
+        :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+        (label
+          :class "icon single-icon ${mic == 2 ? 'running' : mic == 0 ? 'muted' : ''}"
+          :text "${mic == 0 ? '' :  '' }")))))
 
 ; ━━━━ backlight ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 (defpoll backlight
-    :initial 0
-    :interval "1s"
-    "brightnessctl info | grep -i 'current brightness' | awk '{print $4}' | tr -d '()%'")
+  :initial 0
+  :interval "1s"
+  "brightnessctl info | grep -i 'current brightness' | awk '{print $4}' | tr -d '()%'")
 
 (defwidget backlight []
-    (box :class "backlight"
-      :space-evenly false
-        (label :class "text" :text " ")
-    (eventbox :cursor "pointer"
-        :onscroll "modules/scroll-brightness.sh {} && ${eww} poll backlight"
-        (label :class "text" :text "${backlight}%" 
-            :halign "center" :xalign 0.5 :justify "right")
-        )))
+  (box :class "backlight" :space-evenly false
+    (label :class "text" :text " ")
+    (eventbox
+      :cursor "pointer"
+      :onscroll "modules/scroll-brightness.sh {} && ${eww} poll backlight"
+      (label
+        :class "text"
+        :text "${backlight}%" :halign "center" :xalign 0.5 :justify "right"))))
 
 ; ━━━━ volume ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
@@ -203,69 +211,66 @@
 (defwidget speakers []
   (tooltip 
     (label :class "tooltip" :text "${ speakers.volume }%")
-    (box :class "speakers"
+    (box
+      :class "speakers"
       :space-evenly false
-      (button :class "icon ${ speakers.volume > 100 ? 'over' : '' } ${ speakers.muted ? 'muted' : '' }"
-        :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"  
-        (label :text "${ speakers.muted ? '' : 
-                        speakers.volume > 70 ? '' : 
-                        speakers.volume > 35 ? '' : 
-                        '' }"))
+      (button
+        :class "icon ${ speakers.volume > 100 ? 'over' : '' } ${ speakers.muted ? 'muted' : '' }"
+        :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        (label :text "${ speakers.muted ? ''
+                       : speakers.volume > 70 ? ''
+                       : speakers.volume > 35 ? ''
+                       : '' }"))
 
-    (eventbox :cursor "pointer"
+      (eventbox :cursor "pointer"
         :onscroll "modules/scroll-volume.sh {}"
-        :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"  
-        (label :class "text" :text "${speakers.volume}%" 
-            :halign "center" :xalign 0.5 :justify "right")
-    ;(scale 
-    ;  :class "${ speakers.volume > 100 ? 'over' : '' }"
-    ;  :min 0  
-    ;  :max 100 
-    ;  :value "${speakers.volume}" 
-    ;  :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
-        ))))
+        :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        (label :class "text" :text "${speakers.volume}%" :halign "center" :xalign 0.5 :justify "right")))))
 
 ; ━━━━ battery ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
-(defwidget battery []
+(defwidget battery [bat_idx]
   (tooltip
     (label :class "tooltip" :text "${EWW_BATTERY["BAT1"].capacity}%")
-  (box :class "battery"
-    :space-evenly false
-    (label :class "icon icon1 ${  EWW_BATTERY["BAT1"].status == 'Charging' ? 'charging' 
-                     : EWW_BATTERY["BAT1"].status == 'Discharging' ? 'discharging' 
-                     : 'full'}"
-           :text "${  EWW_BATTERY["BAT1"].status == 'Charging' ? '' 
-                    : EWW_BATTERY["BAT1"].status == 'Discharging' ? '' 
-                    : ''}")
-    (label :class "icon icon2 level_${ round(EWW_BATTERY["BAT1"].capacity / 10, 0)}"
-           ; :text "${  EWW_BATTERY["BAT1"].capacity > 95 ? '󰁹' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 90 ? '󰂂' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 80 ? '󰂁' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 70 ? '󰂀' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 60 ? '󰁿' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 50 ? '󰁾' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 40 ? '󰁽' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 30 ? '󰁼' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 20 ? '󰁻' 
-           ;          : EWW_BATTERY["BAT1"].capacity > 10 ? '󰁺' 
+    (box
+      :class "battery"
+      :space-evenly false
+      (label
+        :class "icon icon1 ${ EWW_BATTERY[bat_idx].status == 'Charging' ? 'charging' 
+                            : EWW_BATTERY[bat_idx].status == 'Discharging' ? 'discharging' 
+                            : 'full'}"
+        :text "${ EWW_BATTERY[bat_idx].status == 'Charging' ? '' 
+                : EWW_BATTERY[bat_idx].status == 'Discharging' ? '' 
+                : ''}")
+        (label :class "icon icon2 level_${ round(EWW_BATTERY["BAT1"].capacity / 10, 0)}"
+           ; :text "${  EWW_BATTERY[bat_idx].capacity > 95 ? '󰁹' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 90 ? '󰂂' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 80 ? '󰂁' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 70 ? '󰂀' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 60 ? '󰁿' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 50 ? '󰁾' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 40 ? '󰁽' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 30 ? '󰁼' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 20 ? '󰁻' 
+           ;          : EWW_BATTERY[bat_idx].capacity > 10 ? '󰁺' 
            ;          : '󰂃' }"
 
-            ; use font-awesome
-            :text "${ EWW_BATTERY["BAT1"].capacity > 95 ? ''
-                    : EWW_BATTERY["BAT1"].capacity > 75 ? ''
-                    : EWW_BATTERY["BAT1"].capacity > 50 ? ''
-                    : EWW_BATTERY["BAT1"].capacity > 25 ? ''
-                    : EWW_BATTERY["BAT1"].capacity > 10 ? ''
-                    : '' }")
-    (label :text "${EWW_BATTERY["BAT1"].capacity}%" :halign "center" :xalign 0.5 :justify "right"))))
+          ; use font-awesome
+          :text "${ EWW_BATTERY[bat_idx].capacity > 95 ? ''
+                  : EWW_BATTERY[bat_idx].capacity > 75 ? ''
+                  : EWW_BATTERY[bat_idx].capacity > 50 ? ''
+                  : EWW_BATTERY[bat_idx].capacity > 25 ? ''
+                  : EWW_BATTERY[bat_idx].capacity > 10 ? ''
+                  : '' }")
+        (label :text "${EWW_BATTERY[bat_idx].capacity}%" :halign "center" :xalign 0.5 :justify "right"))))
 
 ; ━━━━ date ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 (defpoll date_poll :interval "1m" "date +%F")
 
 (defwidget date []
-  (box :class "date"
+  (box
+    :class "date"
     :space-evenly false
     (label :class "icon" :text "")
     (label :class "text" :text "${date_poll}")))
@@ -274,69 +279,75 @@
 
 (defvar showdate false)
 (defpoll time_poll :interval "1s" "date +%H:%M")
-(defpoll shichen :interval "1h" "$HOME/bin/zh_hour.sh")
-(defpoll lunarday :interval "4h" "$HOME/bin/lunar_datetime.py")
+(defpoll shichen :interval "1m" "$HOME/bin/zh_hour.sh")
+(defpoll lunarday :interval "1m" "$HOME/bin/lunar_datetime.py")
 
 (defwidget zh_time []
-    (box :class "time"
-         :space-evenly false
-         :spacing 2
-      (label :class "icon" :text "")
-      (label :class "text" :text time_poll)
-      (tooltip
-        (label :class "tooltip" :text lunarday)
-        (label :class "shichen" :text shichen))
-))
+  (box
+    :class "time"
+    :space-evenly false
+    :spacing 2
+    (label :class "icon" :text "")
+    (label :class "text" :text time_poll)
+    (tooltip
+      (label :class "tooltip" :text lunarday)
+      (label :class "shichen" :text shichen))))
 
 ; see: https://github.com/druskus20/eugh/blob/master/bar-concept/eww.yuck
 (include "revealer.yuck")
 
 (defwidget time_revealer []
-    (revealer-on-hover :var showdate :varname "showdate"
-        (date)
-        (zh_time)))
+  (revealer-on-hover :var showdate :varname "showdate"
+    (date)
+    (zh_time)))
 
 ; ━━━━ memory ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (defwidget memory []
-    (box :class "memory"
-        :space-evenly false
-        (label :class "text"
-                :text "MEM ${round(EWW_RAM.used_mem_perc, 0)}%")))
+  (box
+    :class "memory"
+    :space-evenly false
+    (label
+      :visible false
+      :text "just use this magic variable to ensure the update of ${EWW_TIME}")
+    (label :class "text" :text "MEM ${round(EWW_RAM.used_mem_perc, 0)}%")))
 
 ; ━━━━ CPU ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (defwidget CPU []
-    (box :class "cpu"
-        :space-evenly false
-        (label :class "text"
-                :text "CPU ${ round(EWW_CPU.avg, 0) }%")))
+  (box
+    :class "cpu"
+    :space-evenly false
+    :tooltip "${eww} update haha"
+    (label
+      :class "text"
+      :text "CPU ${ round(EWW_CPU.avg, 0) }%")))
 
 ; ━━━━ MPD ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (deflisten mpd_status :initial '{"playing": 0, "song": "mpd not run"}'
-    "./modules/listen-mpd.sh")
+  "./modules/listen-mpd.sh")
 
 
 (defwidget mpd []
-    (box :class "mpd"
-        :space-evenly false
-        (button :onclick "mpc toggle"
-            (label :text "${ mpd_status.playing == 1 ? '' : '' } "))
+  (box :class "mpd" :space-evenly false
+    (button :onclick "mpc toggle"
+      (label :text "${ mpd_status.playing == 1 ? '' : '' } "))
         (tooltip
-            (label :class "tooltip" :text "${mpd_status.song}")
-            (label :text "${mpd_status.song}"
-                :truncate true
-                :limit-width 24))
-        (button :onclick "mpc next"
-            :onrightclick "mpc prev"
-            (label :unindent false :text " "))
-        ))
+          (label :class "tooltip" :text "${mpd_status.song}")
+          (label
+            :text "${mpd_status.song}"
+            :truncate true
+            :limit-width 24))
+        (button
+          :onclick "mpc next"
+          :onrightclick "mpc prev"
+          (label :unindent false :text " "))))
 
 ; ━━━━ netspeed ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (deflisten netspeed :initial '{"RX": "0", "TX": "0"}'
-        "./modules/listen-netspeed.sh wlan0")
+  "./modules/listen-netspeed.sh wlan0")
 
 (defwidget netspeed []
-    (box :class "netspeed"
-        :space-evenly true
-        (label :text "${ netspeed.RX }  ")
-        (label :text "${ netspeed.TX } ")
-        ))
+  (box
+    :class "netspeed"
+    :space-evenly true
+    (label :text "${ netspeed.RX }  ")
+    (label :text "${ netspeed.TX } ")))
