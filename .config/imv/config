@@ -28,7 +28,7 @@ overlay_text_color = 66ccff
 [binds]
 # Define some key bindings
 q = quit
-y = exec echo $imv_current_file | xclip -selection clipboard && notify-send -a imv "imv - yanked path" "<u>$imv_current_file</u>"
+y = exec echo $imv_current_file | wl-clip -selection clipboard && notify-send -a imv "imv - yanked path" "<u>$imv_current_file</u>"
 <Shift+Y> = exec echo working!
 z = exec haha
 

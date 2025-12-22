@@ -1,0 +1,16 @@
+daemonize
+fade-in=0.5
+clock
+timestr=%T
+datestr=%F
+screenshots
+color=66ccff
+font=Consolas
+#indicator-idle-visible
+effect-greyscale
+#effect-pixelate=50
+effect-blur=5x5
+#time-effects
+indicator-image=/home/yychi/Pictures/头像1.png
+indicator-thickness=5
+separator-color=ffffff88

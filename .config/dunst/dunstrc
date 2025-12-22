@@ -41,7 +41,7 @@
     # Offset from the origin
     # NOTE: Dunst from version 1.11 and older use this alternative notation
     # offset = 10x50
-    offset = (10, 35)
+    offset = (10, 10)
 
     # Scale factor. It is auto-detected if value is 0.
 	# NOTE: The screenshot was made with scale = 2
@@ -146,7 +146,7 @@
     ### Text ###
 
     # font = Consolas 12#, HYWenRunSongYun U 12, WenQuanYi Zen Hei
-    font = SF Pro Display 14
+    font = SF Pro Display 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -224,9 +224,12 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = "Papirus, Papirus-Dark, Adwaita"
+    icon_theme = "Papirus, Papirus-Dark, Papirus-Dark, Adwaita"
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Papirus, Adwaita, breeze"
+
+    # Paths to default icons (only necessary when not using recursive icon lookup)
+    # icon_path = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/
 
     # Align icons left/right/top/off
     icon_position = right
@@ -239,8 +242,6 @@
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 64
 
-    # Paths to default icons (only necessary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/
 
     ### History ###
 

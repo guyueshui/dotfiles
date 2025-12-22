@@ -1,6 +1,6 @@
 configuration {
     modi: "window,run,ssh,filebrowser";
-    font: "monaco 24";
+    font: "monaco 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
