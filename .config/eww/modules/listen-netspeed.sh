@@ -6,6 +6,18 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+format_speed() {
+  local sp=$1
+  if [ $sp -lt 10240 ]; then
+    # < 10KB/s, set to 0
+    echo "0KB/s"
+  elif [ $sp -gt 1048576 ]; then
+    echo "$sp / 1048576" | bc -l | awk '{printf "%.1fMB/s", $1}'
+  else
+    echo "$sp / 1024" | bc -l | awk '{printf "%.1fKB/s", $1}'
+  fi
+}
+
 count=0
 mod=3
 ethn=$1
@@ -25,21 +37,8 @@ while true; do
   RX=$((${RX_next} - ${RX_pre}))
   TX=$((${TX_next} - ${TX_pre}))
   
-  if [ $RX -lt 1024 ]; then
-    RX="${RX}B/s"
-  elif [ $RX -gt 1048576 ]; then
-    RX=$(echo "$RX / 1048576" | bc -l | awk '{printf "%.1fMB/s", $1}')
-  else
-    RX=$(echo "$RX / 1024" | bc -l | awk '{printf "%.1fKB/s", $1}')
-  fi
-  
-  if [ $TX -lt 1024 ]; then
-    TX="${TX}B/s"
-  elif [ $TX -gt 1048576 ]; then
-    TX=$(echo "$TX / 1048576" | bc -l | awk '{printf "%.1fMB/s", $1}')
-  else
-    TX=$(echo "$TX / 1024" | bc -l | awk '{printf "%.1fKB/s", $1}')
-  fi
+  RX=$(format_speed $RX)
+  TX=$(format_speed $TX)
   
   #echo -e "\t RX\t TX"
   #echo -e "$ethn\t $RX\t $TX"

@@ -26,6 +26,8 @@ $base: #1e1e2e;
 $mantle: #181825;
 $crust: #11111b;
 
+$fontawesome: FontAwesome,"Font Awesome 7 Free","Font Awesome 7 Solid";
+
 
 * {
   all: unset;
@@ -108,7 +110,6 @@ window {
 
 
 .bluetooth,
-.cpu, .memory,
 .mpd,
 .battery,
 .tray,
@@ -120,19 +121,24 @@ window {
   font-size: 12px;
 }
 
-.battery,
-.time,
-.date {
-  font-size: 10px;
-}
-
 .mpd {
   font-family: FZFW ZhuZi MinchoS;
+}
+
+.battery,
+.cpu, .memory {
+  font-family: DejaVu Sans Mono, $fontawesome;
+  color: $text;
+  font-size: 10px;
 }
 
 .netspeed {
   color: $text;
   font-size: 10px;
+
+  .text {
+    min-width: 40px;
+  }
 }
 
 .player {
@@ -234,10 +240,13 @@ window {
   -gtk-icon-transform: scale(0.75);
 }
 
+
 .date,
 .time {
+  font-size: 10px;
+  color: #3399ff;
   .text {
-    color: $text;
+    font-family: DejaVu Sans Mono, $fontawesome;
   }
   .shichen {
     font-size: xx-small;

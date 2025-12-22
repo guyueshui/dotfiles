@@ -266,6 +266,11 @@
 
 ; ━━━━ date ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
+; A variable need to be used, o.w. it won't be updated automatically.
+(defpoll _bat_cap :initial "1"
+                  :interval "1m"
+                  "./modules/battery-notify.sh")
+
 (defpoll date_poll :interval "1m" "date +%F")
 
 (defwidget date []
@@ -278,28 +283,30 @@
 ; ━━━━ time ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 (defvar showdate false)
-(defpoll time_poll :interval "1s" "date +%H:%M")
+(defpoll time_poll :interval "1s" "LC_TIME=C_TYPE date +'%H:%M(%a)'")
 (defpoll shichen :interval "1m" "$HOME/bin/zh_hour.sh")
 (defpoll lunarday :interval "1m" "$HOME/bin/lunar_datetime.py")
 
-(defwidget zh_time []
+(defwidget time []
   (box
     :class "time"
     :space-evenly false
     :spacing 2
     (label :class "icon" :text "")
-    (label :class "text" :text time_poll)
-    (tooltip
-      (label :class "tooltip" :text lunarday)
-      (label :class "shichen" :text shichen))))
+    (label :class "text" :text time_poll)))
 
 ; see: https://github.com/druskus20/eugh/blob/master/bar-concept/eww.yuck
 (include "revealer.yuck")
 
 (defwidget time_revealer []
-  (revealer-on-hover :var showdate :varname "showdate"
-    (date)
-    (zh_time)))
+  (box :class "time"
+       :space-evenly false
+    (hover-switch :var showdate :varname "showdate"
+      (time)
+      (date))
+    (tooltip
+      (label :class "tooltip" :text lunarday)
+      (label :class "shichen" :text shichen))))
 
 ; ━━━━ memory ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (defwidget memory []
@@ -308,7 +315,7 @@
     :space-evenly false
     (label
       :visible false
-      :text "just use this magic variable to ensure the update of ${EWW_TIME}")
+      :text "${_bat_cap} just use this magic variable to ensure the update of ${EWW_TIME}")
     (label :class "text" :text "MEM ${round(EWW_RAM.used_mem_perc, 0)}%")))
 
 ; ━━━━ CPU ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -327,19 +334,19 @@
 
 
 (defwidget mpd []
-  (box :class "mpd" :space-evenly false
+  (box :class "mpd" :space-evenly false :spacing 6
     (button :onclick "mpc toggle"
-      (label :text "${ mpd_status.playing == 1 ? '' : '' } "))
-        (tooltip
-          (label :class "tooltip" :text "${mpd_status.song}")
-          (label
+    (label :text "${ mpd_status.playing == 1 ? '' : '' }"))
+      (tooltip
+        (label :class "tooltip" :text "${mpd_status.song}")
+        (label
             :text "${mpd_status.song}"
             :truncate true
             :limit-width 24))
         (button
           :onclick "mpc next"
           :onrightclick "mpc prev"
-          (label :unindent false :text " "))))
+          (label :text ""))))
 
 ; ━━━━ netspeed ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (deflisten netspeed :initial '{"RX": "0", "TX": "0"}'
@@ -348,6 +355,13 @@
 (defwidget netspeed []
   (box
     :class "netspeed"
-    :space-evenly true
-    (label :text "${ netspeed.RX }  ")
-    (label :text "${ netspeed.TX } ")))
+    :space-evenly false
+    :spacing 2
+    (label :text "${ netspeed.RX }  "
+           :class "text"
+           ;:limit-width 10
+           :justify "fill")
+    (label :text "${ netspeed.TX } "
+           :class "text"
+           ;:limit-width 10
+           :justify "fill")))
