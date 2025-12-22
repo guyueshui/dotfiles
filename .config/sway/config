@@ -1,0 +1,375 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $alt Mod1
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+set $SWAY_CONFIG_DIR $HOME/.config/sway
+
+bindsym ctrl+$alt+h workspace prev
+bindsym ctrl+$alt+l workspace next
+
+# 背光
+bindsym ctrl+Mod1+Up   exec "brightnessctl set +5%"
+bindsym ctrl+Mod1+Down exec "brightnessctl set 5%-"
+
+
+# for controling the MPD
+#bindsym ctrl+Mod1+r exec "mpc update"
+#bindsym ctrl+Mod1+p exec mpc toggle
+bindsym ctrl+Mod1+period exec mpc next
+bindsym ctrl+Mod1+comma exec mpc prev
+
+
+# Your preferred terminal emulator
+set $term kitty
+# Your preferred application launcher
+set $menu wmenu-run
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $HOME/Pictures/Aragaki_Yui.JPG fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output eDP-1 resolution 3072x1920 position 0,0
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    
+    # Disable drag_lock otherwise double click will emulate a drag process
+    # even if you release you finger.
+    # 
+    # see: https://wayland.freedesktop.org/libinput/doc/1.5.3/tapping.html
+    drag_lock disabled
+}
+#
+#   input type:keyboard {
+#       xkb_layout "eu"
+#   }
+#
+# You can also configure each device individually.
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $alt+F4 kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $alt+$left focus left
+    bindsym $alt+$down focus down
+    bindsym $alt+$up focus up
+    bindsym $alt+$right focus right
+    bindsym $alt+Tab focus right
+    # Or use $mod+[up|down|left|right]
+    #bindsym $mod+Left focus left
+    #bindsym $mod+Down focus down
+    #bindsym $mod+Up focus up
+    #bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $alt+Shift+$left move left
+    bindsym $alt+Shift+$down move down
+    bindsym $alt+Shift+$up move up
+    bindsym $alt+Shift+$right move right
+    # Ditto, with arrow keys
+    #bindsym $mod+Shift+Left move left
+    #bindsym $mod+Shift+Down move down
+    #bindsym $mod+Shift+Up move up
+    #bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+
+# customize workspace name
+set $WS1   1:Raw
+set $WS2   2:Doc
+set $WS3   3:Web
+set $WS4   4:Dev
+set $WS5   5:Fun
+set $WS6   6:
+set $WS7   7:
+set $WS8   8:Win
+
+# assign specific app to specific workspace
+assign [window_role="browser"] $WS3
+assign [class="VirtualBox"] $WS8
+
+# Switch to workspace
+bindsym Mod1+1 workspace $WS1
+bindsym Mod1+2 workspace $WS2
+bindsym Mod1+3 workspace $WS3
+bindsym Mod1+4 workspace $WS4
+bindsym Mod1+5 workspace $WS5
+bindsym Mod1+6 workspace $WS6
+bindsym Mod1+7 workspace $WS7
+bindsym Mod1+8 workspace $WS8
+bindsym $alt+9 workspace number 9
+bindsym $alt+0 workspace number 10
+# Move focused container to workspace
+bindsym $alt+Shift+1 move container to workspace $WS1
+bindsym $alt+Shift+2 move container to workspace $WS2
+bindsym $alt+Shift+3 move container to workspace $WS3
+bindsym $alt+Shift+4 move container to workspace $WS4
+bindsym $alt+Shift+5 move container to workspace $WS5
+bindsym $alt+Shift+6 move container to workspace $WS6
+bindsym $alt+Shift+7 move container to workspace $WS7
+bindsym $alt+Shift+8 move container to workspace $WS8
+bindsym $alt+Shift+9 move container to workspace number 9
+bindsym $alt+Shift+0 move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
+
+
+# popups
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="(?i)wizard"] floating enable
+for_window [window_role="item-selector"] floating enable
+
+# float programs
+# Use `xprop` to get window info.
+# And search `command_criteria` in i3 user guide for more info.
+#
+#   https://i3wm.org/docs/userguide.html#command_criteria
+#
+for_window [class="imv"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Nautilus"] floating enable
+for_window [class="File-roller"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="VirtualBox Manager"] floating enable
+for_window [class="SimpleScreenRecorder"] floating enable
+for_window [class="flameshot"] floating enable
+for_window [class="xpad"] floating enable
+for_window [class="netease-cloud-music"] floating enable
+for_window [class="GoldenDict"] floating enable
+for_window [class="qv2ray"] floating enable
+for_window [class="wechat"] floating enable
+for_window [class="QQ"] floating enable
+for_window [instance="ranger"] floating enable
+
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+h splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+z layout stacking
+    bindsym $mod+x layout tabbed
+    bindsym $mod+c layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    #bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    #bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym Ctrl+$alt+minus move scratchpad
+    # add extra handy pull-down terminal
+    bindsym $alt+p [class="((?i)urxvt|kitty)"] scratchpad show
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $alt+minus scratchpad show
+
+#: Binding mode {{{
+# create a mode for custom app shortcut
+mode "launcher" {
+    bindsym o exec obsidian; mode "default"
+    bindsym k exec kitty; mode "default"
+    bindsym f exec firefox; mode "default"
+    bindsym r exec "kitty --name ranger -d ~ ranger"; mode "default"
+
+    # return to default mode
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+o mode "launcher"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+s mode "resize"
+#: }}}
+
+
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+
+
+#: My Hotkeys {{{
+bindsym ctrl+Mod1+Return exec code
+bindsym ctrl+Mod1+k exec kitty
+bindsym ctrl+Mod1+o exec obsidian
+bindsym ctrl+Mod1+r exec "kitty --name ranger -d ~ ranger"
+bindsym $mod+l exec slock
+
+# Screenshot
+# bindsym Print exec scrot -q 1 -e 'mv $f ~/Pictures'
+# bindsym Print exec gnome-screenshot -i
+bindsym Print exec flameshot screen -p ~/Pictures
+bindsym Mod1+Shift+q exec flameshot gui
+# start Explorer
+bindsym $mod+e exec nautilus -w
+# start dmenu (a program launcher)
+bindsym $mod+r exec rofi -show run
+#bindsym $mod+x exec dmenu_run
+bindsym $mod+Tab exec rofi -show 
+#: }}}
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+
+#bar {
+#    position top
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command while ~/.config/sway/status.sh; do sleep 1; done
+#
+#    separator_symbol |
+#    icon_theme Papirus
+#
+#    # enable click in tray
+#    #tray_bindsym button1 Activate
+#    #tray_bindsym button2 ContextMenu
+#    #tray_bindsym button3 SecondaryActivate
+#    tray_padding 4
+#
+#
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
+
+#
+#
+#
+# enable window icons for all windows with extra horizontal padding
+for_window [all] title_window_icon padding 3px
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
+# Monitor idle, see: man 1 swayidle
+exec_always swayidle -w \
+    timeout 480 'swaylock' \
+    timeout 600 'swaymsg "output * power off"' \
+    resume      'swaymsg "output * power on"' \
+    before-sleep 'swaylock'
+
+
+# Load X resource database, for XWayland
+exec xrdb -load ~/.Xresources
+
+# include /etc/sway/config.d/*
+include conf.d/*.conf
